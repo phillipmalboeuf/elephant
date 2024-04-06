@@ -1,0 +1,21 @@
+$body_font: 'Inter', sans-serif;
+$heading_font: 'Futura', sans-serif;
+
+$white: #FFFFFF;
+$green: #00A558;
+$green_dark: #004826;
+$yellow: #F2C017;
+
+$base: 20px;
+$scale: 1.25;
+$gap: $base * $scale;
+
+$radius: $base;
+$max: 1220px;
+
+$mobile: 888px;
+$mobile_base: 15px;
+$mobile_scale: 1.25;
+$mobile_gap: $mobile_base * $mobile_scale;
+
+$number_of_columns: 12;
