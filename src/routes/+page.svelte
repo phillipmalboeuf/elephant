@@ -1,11 +1,25 @@
 <script lang="ts">
-  import Media from '$lib/components/Media.svelte';
+  import Media from '$lib/components/Media.svelte'
+  import Slider from '$lib/components/Slider.svelte'
+
   import type { PageData } from './$types'
   export let data: PageData
 </script>
 
 <main>
-  {#if data.page.fields.image}
+  {#if data.page.fields.gallerie?.length}
+  <figure>
+    <Slider buttons={false} autoheight={false}>
+      <ol class="slider__container">
+        {#each data.page.fields.gallerie as media}
+        <li class="slide">
+          <Media {media} />
+        </li>
+        {/each}
+      </ol>
+    </Slider>
+  </figure>
+  {:else if data.page.fields.image}
   <figure>
     <Media media={data.page.fields.image} />
   </figure>
@@ -25,17 +39,29 @@
     justify-content: center;
 
     h1 {
+      position: relative;
+      z-index: 1;
       color: $white;
       text-transform: uppercase;
       font-size: 10vw;
+      text-align: center;
+
+      @media (max-width: $mobile) {
+        font-size: 8vh;
+      }
     }
 
     figure {
       position: absolute;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
 
-      :global(img) {
+      ol {
+        height: 100vh;
+      }
+
+      :global(img),
+      .slide {
         border-radius: 0;
         height: 100%;
       }

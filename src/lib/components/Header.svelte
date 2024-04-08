@@ -25,6 +25,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 10;
 
     padding: ($base * 0.5) $base;
     border-bottom-left-radius: $radius;
@@ -35,10 +36,32 @@
     align-items: flex-start;
     gap: $base;
 
+    @media (max-width: $mobile) {
+      top: auto;
+      bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
+      padding: $base;
+    }
+
     .logo {
       display: flex;
       align-items: flex-end;
       gap: $base;
+
+      @media (max-width: $mobile) {
+        order: 99;
+        margin-left: auto;
+
+        :global(svg):last-child {
+          position: fixed;
+          top: $gap;
+          left: 0;
+          width: 100%;
+        }
+      }
     }
 
     nav {
@@ -52,6 +75,10 @@
 
       &:first-of-type {
         margin-left: auto;
+
+        @media (max-width: $mobile) {
+          margin-left: 0;
+        }
       }
     }
   }
