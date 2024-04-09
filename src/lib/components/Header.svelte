@@ -27,9 +27,15 @@
     width: 100%;
     z-index: 10;
 
+    :global(.-products) & {
+      position: sticky;
+    }
+
     padding: ($base * 0.5) $base;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
+
+    color: $white;
     background-color: $green;
 
     display: flex;

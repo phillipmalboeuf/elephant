@@ -26,8 +26,8 @@ body {
 	-webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-	color: $white;
-	background-color: $green;
+	color: $black;
+	background-color: $grey;
 
 	@media (max-width: $mobile) {
     font-size: $mobile_base;
@@ -145,6 +145,8 @@ button,
 .button {
 	cursor: pointer;
 	display: flex;
+	align-items: center;
+	gap: $base * 0.5;
 
 	* {
 		pointer-events: none;
@@ -181,7 +183,7 @@ hr {
 	border: none;
 	height: 1px;
 	background-color: currentColor;
-	margin: ($base*0.5) 0;
+	margin: ($base*0.666) 0;
 }
 
 table {
@@ -219,6 +221,23 @@ table {
 	}
 }
 
+details {
+	
+	summary {
+		// cursor: pointer;
+
+		&::-webkit-details-marker {
+			display: none;
+			content: "";
+		}
+
+		&::marker {
+			display: none;
+			content: "";
+		}
+	}
+}
+
 
 // #GRID
 
@@ -231,6 +250,10 @@ table {
 
 	&.flex--end {
 		justify-content: flex-end;
+	}
+
+	&.flex--spaced {
+		justify-content: space-between;
 	}
 
   &.flex--gapped {

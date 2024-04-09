@@ -18,11 +18,13 @@
 	{/if}
 </svelte:head>
 
-<Header />
+<div class="{$page.route.id.replaceAll('/', '-')} {$page.url.pathname.replaceAll('/', '-')}">
+	<Header />
 
-<main>
-  <slot />
-</main>
+	<main>
+		<slot />
+	</main>
+</div>
 
 <style lang="scss">
 

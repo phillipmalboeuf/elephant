@@ -1,5 +1,20 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
 
+export interface TypeCollectionFields {
+    title: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    color?: EntryFieldTypes.Symbol;
+    products?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProductSkeleton>>;
+}
+
+export type TypeCollectionSkeleton = EntrySkeletonType<TypeCollectionFields, "collection">;
+export type TypeCollection<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeCollectionSkeleton, Modifiers, Locales>;
+
+export function isTypeCollection<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeCollection<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'collection'
+}
+
 export interface TypeModelFields {
     title: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
@@ -51,6 +66,7 @@ export interface TypePageFields {
     image?: EntryFieldTypes.AssetLink;
     gallerie?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     link?: EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>;
+    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeNavigationSkeleton | TypeProductSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -69,6 +85,7 @@ export interface TypeProductFields {
     ageMax?: EntryFieldTypes.Integer;
     type?: EntryFieldTypes.Symbol;
     gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    models?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeModelSkeleton>>;
 }
 
 export type TypeProductSkeleton = EntrySkeletonType<TypeProductFields, "product">;
