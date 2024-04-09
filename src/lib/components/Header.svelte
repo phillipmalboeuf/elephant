@@ -9,9 +9,8 @@
     <Logotype />
   </a>
   <nav>
-    <a href="https://facebook.com" target="_blank" rel="external">Facebook</a>
-    <a href="https://instagram.com" target="_blank" rel="external">Instagram</a>
-    <a href="https://linkedin.com" target="_blank" rel="external">Linkedin</a>
+    <a href="https://www.facebook.com/ElephantPlay" target="_blank" rel="external">Facebook</a>
+    <a href="https://www.instagram.com/elephant.play/" target="_blank" rel="external">Instagram</a>
   </nav>
   <nav>
     <a href="mailto:info@elephantplay.com" target="_blank" rel="external">info@elephantplay.com</a>
