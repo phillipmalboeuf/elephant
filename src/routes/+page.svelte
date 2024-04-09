@@ -72,6 +72,12 @@
       bottom: $gap;
       right: $gap;
       font-size: $base * 0.75;
+
+      @media (max-width: $mobile) {
+        bottom: $gap * 5;
+        right: 50%;
+        transform: translateX(50%);
+      }
     }
   }
 </style>
