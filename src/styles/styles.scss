@@ -148,10 +148,6 @@ button,
 	align-items: center;
 	gap: $base * 0.5;
 
-	* {
-		pointer-events: none;
-	}
-
 	&.button--green {
 		color: $white;
 		background: $greenish;
@@ -161,6 +157,21 @@ button,
 	&:focus {
 		text-decoration: none;
 		background: $yellow;
+	}
+}
+
+input[type = "radio"],
+input[type = "checkbox"] {
+	cursor: pointer;
+	appearance: none;
+	padding: ($base * 0.5);
+
+	color: currentColor;
+	background-color: transparent;
+	border: 1px solid;
+
+	&:checked {
+		background-color: currentColor;
 	}
 }
 

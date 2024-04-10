@@ -1,14 +1,14 @@
 <script lang="ts">
-  import type { TypeCollectionSkeleton } from '$lib/clients/content_types'
+  import type { TypeCollectionFields, TypeCollectionSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
   
   import Media from './Media.svelte'
 
-  export let item: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+  export let item: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> | { fields: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">['fields'] }
   export let open = undefined
 </script>
 
-<details {open} style:--color={item.fields.color}>
+<details {open} style:--color={item.fields.color} class:white={item.fields.color?.toLowerCase() === '#ffffff'}>
   <summary class="flex flex--gapped flex--spaced">
     <hr>
     <h3>{item.fields.title}</h3>
@@ -37,12 +37,12 @@
   </summary>
 
   <main class="flex flex--gapped">
+    {#if item.fields.description}
     <hr>
-
     <p class="col col--6of12">À propos de cette série</p>
     <p class="col col--6of12">{item.fields.description}</p>
-
     <hr>
+    {/if}
 
     {#if item.fields.products?.length}
     <ol class="list--nostyle flex flex--gapped">
@@ -69,6 +69,10 @@
     background-color: var(--color, $green);
     padding: $base;
     border-radius: $radius * 0.66;
+
+    &.white {
+      color: $green;
+    }
 
     summary {
       cursor: pointer;
