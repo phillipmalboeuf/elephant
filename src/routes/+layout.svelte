@@ -2,7 +2,7 @@
 	import '../styles/styles.scss'
 
 	import Header from '$lib/components/Header.svelte'
-	// import Footer from '$lib/components/Footer.svelte'
+	import Footer from '$lib/components/Footer.svelte'
 	// import Cursor from '$lib/components/Cursor.svelte'
 
 	import { page } from '$app/stores'
@@ -19,11 +19,13 @@
 </svelte:head>
 
 <div class="{$page.route.id.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}">
-	<Header />
+	<Header navigation={data.primary} />
 
 	<main>
 		<slot />
 	</main>
+
+	<Footer primary={data.primary} social={data.social} contact={data.contact} />
 </div>
 
 <style lang="scss">

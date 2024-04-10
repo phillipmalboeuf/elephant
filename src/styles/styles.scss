@@ -102,8 +102,8 @@ h5,
 
 h6,
 .h6 {
-	font-size: $base * $scale * 0.666;
-	font-weight: normal;
+	font-size: $base;
+	font-weight: 700;
 	text-transform: uppercase;
 }
 
@@ -261,6 +261,10 @@ details {
 
 	&.flex--spaced {
 		justify-content: space-between;
+	}
+
+	&.flex--middle {
+		align-items: center;
 	}
 
   &.flex--gapped {
