@@ -20,15 +20,11 @@
 
 <style lang="scss">
   header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
-
-    :global(.-products) & {
-      position: sticky;
-    }
 
     padding: ($base * 0.5) $base;
     border-bottom-left-radius: $radius;
@@ -75,7 +71,7 @@
       gap: $base * 0.25;
 
       a {
-        font-size: $base * 0.75;
+        
       }
 
       &:first-of-type {

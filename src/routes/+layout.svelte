@@ -18,7 +18,7 @@
 	{/if}
 </svelte:head>
 
-<div class="{$page.route.id.replaceAll('/', '-')} {$page.url.pathname.replaceAll('/', '-')}">
+<div class="{$page.route.id.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}">
 	<Header />
 
 	<main>

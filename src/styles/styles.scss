@@ -19,7 +19,7 @@ body {
 	min-height: 100vh;
 
 	font-family: $body_font;
-	font-size: $base;
+	font-size: $base * 0.75;
 	font-weight: 500;
 	line-height: $scale;
 	font-optical-sizing: auto;
@@ -152,6 +152,11 @@ button,
 		pointer-events: none;
 	}
 
+	&.button--green {
+		color: $white;
+		background: $greenish;
+	}
+
 	&:hover,
 	&:focus {
 		text-decoration: none;
@@ -193,15 +198,16 @@ table {
 
 	td,
 	th {
-		border-bottom: 1px solid;
+		font-weight: normal;
+		border-top: 1px solid;
 		padding: ($base * 0.5) 0;
 		white-space: pre-line;
 		width: calc(100% / var(--length));
 	}
 
 	th {
+		border-top: none;
 		text-align: left;
-		font-weight: normal;
 		border-color: transparent;
 	}
 
@@ -244,6 +250,7 @@ details {
 .flex {
   width: 100%;
   display: flex;
+	align-items: flex-start;
   flex-wrap: wrap;
   --gap: 0px;
   gap: var(--gap);
@@ -262,10 +269,18 @@ details {
     @media (max-width: $mobile) {
       --gap: #{$base/2};
     }
+
+		hr {
+			margin: 0;
+		}
   }
 
   &.flex--thick_gapped {
     --gap: #{$base*2};
+
+		hr {
+			margin: 0;
+		}
   }
 
   &.flex--tight_gapped {
@@ -273,6 +288,10 @@ details {
     @media (max-width: $mobile) {
       --gap: #{$base/3};
     }
+
+		hr {
+			margin: 0;
+		}
   }
 
   &.flex--tight_guttered_on_phone {

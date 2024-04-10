@@ -5,20 +5,23 @@
   import Media from './Media.svelte'
 
   export let item: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+  export let open = undefined
 </script>
 
-<details style:--color={item.fields.color}>
+<details {open} style:--color={item.fields.color}>
   <summary class="flex flex--gapped flex--spaced">
     <hr>
     <h3>{item.fields.title}</h3>
+    {#if !open}
     <button>See all from {item.fields.title} <svg width="17" height="9" viewBox="0 0 17 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L8.5 8L16 1" stroke="currentColor"/></svg></button>
+    {/if}
 
     {#if item.fields.products?.length}
     <ol class="list--nostyle flex flex--gapped">
       {#each item.fields.products as product, i}
       {#if i < 3}
       <li class="col col--4of12">
-        <a href="/products/{product.fields.id}">
+        <a href="/collections/{item.fields.id}/{product.fields.id}">
           <figure>
             {#if product.fields.thumbnail}
             <Media media={product.fields.thumbnail} ar={0.75} />
@@ -45,7 +48,7 @@
     <ol class="list--nostyle flex flex--gapped">
       {#each item.fields.products as product, i}
       <li class="col col--4of12">
-        <a href="/products/{product.fields.id}">
+        <a href="/collections/{item.fields.id}/{product.fields.id}">
           <figure>
             {#if product.fields.thumbnail}
             <Media media={product.fields.thumbnail} ar={0.75} />
@@ -81,7 +84,7 @@
       margin-top: $gap * 3;
 
       p {
-        font-size: $base * 0.75;
+        
       }
     }
 
