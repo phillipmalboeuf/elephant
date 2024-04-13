@@ -158,6 +158,12 @@ button,
 		text-decoration: none;
 		background: $yellow;
 	}
+
+	&.button--none {
+		color: currentColor;
+		background: transparent;
+		padding: 0;
+	}
 }
 
 input[type = "radio"],
@@ -196,6 +202,7 @@ ol {
 }
 
 hr {
+	color: currentColor;
 	border: none;
 	height: 1px;
 	background-color: currentColor;

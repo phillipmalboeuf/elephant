@@ -10,9 +10,9 @@
   export let autoheight = true
   export let dots: number = undefined
 
-  let options: EmblaOptionsType = { loop: true, duration: 0 }
+  let options: EmblaOptionsType = { loop: true }
   let plugins = [
-    Autoplay({ delay: 2666, stopOnFocusIn: false, stopOnMouseEnter: false, stopOnInteraction: false }),
+    Autoplay({ delay: 2666, stopOnFocusIn: true, stopOnMouseEnter: false, stopOnInteraction: true }),
     ...autoheight ? [Autoheight()] : []
   ]
 
@@ -34,8 +34,8 @@
 
 {#if buttons}
 <nav>
-  <button class="previous" on:click={() => slider.scrollPrev()}><svg width="19" height="19" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 8.0074H3.7581L10.2398 1.41229L8.85183 0L0 9.00666L8.85183 18L10.2398 16.5877L3.7581 10.0059H19V8.0074Z"/></svg></button>
-  <button class="next" on:click={() => slider.scrollNext()}><svg width="19" height="19" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.00029e-07 9.9926L15.2419 9.9926L8.76017 16.5877L10.1482 18L19 8.99334L10.1482 -7.73851e-07L8.76017 1.41229L15.2419 7.99408L8.74746e-07 7.99408L7.00029e-07 9.9926Z"/></svg></button>
+  <button class="previous" on:click={() => slider.scrollPrev()}><svg width="20" height="20" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L2 11.5L12 22" stroke="black" stroke-width="2"/></svg></button>
+  <button class="next" on:click={() => slider.scrollNext()}><svg width="20" height="20" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 22L11 11.5L0.999999 1" stroke="black" stroke-width="2"/></svg></button>
 </nav>
 {/if}
 

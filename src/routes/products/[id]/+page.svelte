@@ -1,10 +1,23 @@
 <script lang="ts">
+  import type { Entry } from 'contentful'
+  import type { TypeModelSkeleton } from '$lib/clients/content_types'
+
   import Media from '$lib/components/Media.svelte'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types' 
+  import Slider from '$lib/components/Slider.svelte';
+  import { downloads } from '$lib/stores';
   export let data: PageData
+
+  let model: Entry<TypeModelSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+
+  $: {
+    model = data.product.fields.models?.length
+      ? $page.url.searchParams.has('model') ? data.product.fields.models.find(model => model.fields.id === $page.url.searchParams.get('model')) : data.product.fields.models[0]
+      : undefined
+  }
 </script>
 
 <svelte:head>
@@ -38,21 +51,64 @@
         <td>{data.product.fields.ageMin}-{data.product.fields.ageMax}</td>
       </tr>
     </table>
+
+    {#if data.product.fields.models?.length}
+    <main class="col col--12of12">
+      <p>Modèle</p>
+      {#each data.product.fields.models as model, i}
+      <a href="?model={model.fields.id}" class="button" class:active={$page.url.searchParams.get('model') === model.fields.id}>{model.fields.title} <small>{model.fields.sku}</small></a>
+      {/each}
+    </main>
+    {/if}
+
+    {#if model}
     <table class="col col--12of12">
       <tr>
         <th>Spécifications</th>
       </tr>
       <tr>
-        <td>Type d’activité</td>
-        <td>{data.product.fields.type}</td>
+        <td>Taille</td>
+        <td>{model.fields.surfaceX}m x {model.fields.surfaceY}m</td>
       </tr>
       <tr>
-        <td>Âge</td>
-        <td>{data.product.fields.ageMin}-{data.product.fields.ageMax}</td>
+        <td>Hauteur de chute</td>
+        <td>{model.fields.height}m</td>
+      </tr>
+      <tr>
+        <td>Zone de sécurité</td>
+        <td>{model.fields.security}</td>
       </tr>
     </table>
+
+    {#if model.fields.downloads?.length}
+    <main class="col col--12of12">
+      <p>Downloads</p>
+      <aside>
+      {#each model.fields.downloads as download, i}
+      <a href={download.fields.file.url} download on:click|preventDefault={() => {
+        downloads.set([...$downloads, download])
+      }}>{download.fields.title} <small>+</small></a>
+      {/each}
+      </aside>
+    </main>
+    {/if}
+    {/if}
   </header>
-  <figure class="col col--8of12 flex flex--gapped">
+  <section class="col col--8of12 flex flex--gapped">
+    {#if model && model.fields.gallery?.length}
+    <figure>
+      <Slider buttons autoheight>
+        <ol class="slider__container">
+          {#each model.fields.gallery as media}
+          <li class="slide">
+            <Media {media} />
+          </li>
+          {/each}
+        </ol>
+      </Slider>
+    </figure>
+    {/if}
+
     {#if data.product.fields.gallery?.length}
     <ul class="list--nostyle flex flex--gapped">
     {#each data.product.fields.gallery as media}
@@ -60,7 +116,7 @@
     {/each}
     </ul>
     {/if}
-  </figure>
+  </section>
 </article>
 
 
@@ -87,6 +143,48 @@
         text-transform: uppercase;
         margin-bottom: $gap * 3;
       }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: $base * 0.25;
+
+      .button {
+        justify-content: space-between;
+
+        &:not(:hover):not(:focus):not(.active) {
+          color: $white;
+          background-color: fade-out($black, 0.75);
+        }
+      }
+    }
+
+    aside {
+      padding: $base;
+      border-radius: $radius * 0.5;
+      background-color: fade-out($black, 0.75);
+
+      a {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid fade-out($white, 0.75);
+        padding-bottom: 2px;
+        margin-bottom: $base * 0.25;
+
+        &:hover,
+        &:focus {
+          border-color: currentColor;
+        }
+      }
+    }
+
+    figure {
+      width: 100%;
+      min-height: 50vh;
+      position: relative;
+      background-color: $white;
+      border-radius: $radius;
     }
   }
 </style>

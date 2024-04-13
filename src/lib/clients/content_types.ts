@@ -23,7 +23,7 @@ export interface TypeModelFields {
     surfaceY: EntryFieldTypes.Number;
     height: EntryFieldTypes.Number;
     security?: EntryFieldTypes.Symbol;
-    gallery?: EntryFieldTypes.AssetLink;
+    gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     downloads?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
 }
 
