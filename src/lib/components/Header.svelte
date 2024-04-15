@@ -40,6 +40,10 @@
     width: 100%;
     z-index: 10;
 
+    :global(body:has(.hero:first-child)) & {
+      position: fixed;
+    }
+
     padding: ($base * 0.75) $gap;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;

@@ -13,7 +13,11 @@
     <hr>
     <h3>{item.fields.title}</h3>
     {#if !open}
+    {#if item.fields.id === "products"}
+    <a href="/products" class="button button--green">See all products</a>
+    {:else}
     <button>See all from {item.fields.title} <svg width="17" height="9" viewBox="0 0 17 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L8.5 8L16 1" stroke="currentColor"/></svg></button>
+    {/if}
     {/if}
 
     {#if item.fields.products?.length}

@@ -27,6 +27,20 @@ export function isTypeCollection<Modifiers extends ChainModifiers, Locales exten
     return entry.sys.contentType.sys.id === 'collection'
 }
 
+export interface TypeHeroFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    buttons?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>>;
+}
+
+export type TypeHeroSkeleton = EntrySkeletonType<TypeHeroFields, "hero">;
+export type TypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeHeroSkeleton, Modifiers, Locales>;
+
+export function isTypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHero<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'hero'
+}
+
 export interface TypeModelFields {
     title: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
@@ -62,6 +76,7 @@ export interface TypeNavigationLinkFields {
     label?: EntryFieldTypes.Symbol;
     path?: EntryFieldTypes.Symbol;
     external?: EntryFieldTypes.Boolean;
+    color?: EntryFieldTypes.Symbol;
 }
 
 export type TypeNavigationLinkSkeleton = EntrySkeletonType<TypeNavigationLinkFields, "navigationLink">;
@@ -78,7 +93,7 @@ export interface TypePageFields {
     image?: EntryFieldTypes.AssetLink;
     gallerie?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     link?: EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>;
-    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeNavigationSkeleton | TypeProductSkeleton | TypeProjectSkeleton | TypeRealisationsSkeleton>>;
+    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeHeroSkeleton | TypeNavigationSkeleton | TypeProductSkeleton | TypeProjectSkeleton | TypeRealisationsSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -143,4 +158,20 @@ export type TypeRealisations<Modifiers extends ChainModifiers, Locales extends L
 
 export function isTypeRealisations<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeRealisations<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'realisations'
+}
+
+export interface TypeTextFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    buttons?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>>;
+    style?: EntryFieldTypes.Symbol<"Overflow">;
+    body?: EntryFieldTypes.RichText;
+}
+
+export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;
+export type TypeText<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeTextSkeleton, Modifiers, Locales>;
+
+export function isTypeText<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeText<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'text'
 }
