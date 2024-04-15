@@ -33,6 +33,12 @@ body {
     font-size: $mobile_base;
     line-height: $mobile_scale;
   }
+
+	&:has(.-projects),
+	&:has(.-projects-id) {
+		color: $white;
+		background-color: $green_dark;
+	}
 }
 
 ::selection {
@@ -43,6 +49,7 @@ body {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: $heading_font;
+	text-transform: uppercase;
 	font-weight: bold;
 	line-height: 1;
 	white-space: pre-line;
@@ -104,7 +111,6 @@ h6,
 .h6 {
 	font-size: $base;
 	font-weight: 700;
-	text-transform: uppercase;
 }
 
 p {
@@ -243,6 +249,14 @@ table {
 			// border-left: 1px solid;
 		}
 	}
+
+	&.table--inverse {
+		td,
+		th {
+			border-top: none;
+			border-bottom: 1px solid;
+		}
+	}
 }
 
 details {
@@ -260,6 +274,10 @@ details {
 			content: "";
 		}
 	}
+}
+
+[id] {
+	scroll-margin-top: $base * 4;
 }
 
 

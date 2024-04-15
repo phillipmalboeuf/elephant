@@ -110,7 +110,7 @@
   }
 
   h3 {
-    text-transform: uppercase;
+    
   }
 
   h6 {

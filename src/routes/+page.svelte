@@ -42,7 +42,6 @@
       position: relative;
       z-index: 1;
       color: $white;
-      text-transform: uppercase;
       font-size: 10vw;
       text-align: center;
 

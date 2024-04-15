@@ -1,5 +1,17 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
 
+export interface TypeCategoryFields {
+    title: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+}
+
+export type TypeCategorySkeleton = EntrySkeletonType<TypeCategoryFields, "category">;
+export type TypeCategory<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeCategorySkeleton, Modifiers, Locales>;
+
+export function isTypeCategory<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeCategory<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'category'
+}
+
 export interface TypeCollectionFields {
     title: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
@@ -66,7 +78,7 @@ export interface TypePageFields {
     image?: EntryFieldTypes.AssetLink;
     gallerie?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     link?: EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>;
-    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeNavigationSkeleton | TypeProductSkeleton>>;
+    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeNavigationSkeleton | TypeProductSkeleton | TypeProjectSkeleton | TypeRealisationsSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -93,4 +105,42 @@ export type TypeProduct<Modifiers extends ChainModifiers, Locales extends Locale
 
 export function isTypeProduct<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeProduct<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'product'
+}
+
+export interface TypeProjectFields {
+    title: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    categories?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCategorySkeleton>>;
+    location?: EntryFieldTypes.Symbol;
+    year?: EntryFieldTypes.Integer;
+    type?: EntryFieldTypes.Symbol;
+    surface?: EntryFieldTypes.Symbol;
+    height?: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    thumbnail?: EntryFieldTypes.AssetLink;
+    gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    body?: EntryFieldTypes.RichText;
+    products?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProductSkeleton>>;
+}
+
+export type TypeProjectSkeleton = EntrySkeletonType<TypeProjectFields, "project">;
+export type TypeProject<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeProjectSkeleton, Modifiers, Locales>;
+
+export function isTypeProject<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeProject<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'project'
+}
+
+export interface TypeRealisationsFields {
+    title: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    color?: EntryFieldTypes.Symbol;
+    projects?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProjectSkeleton>>;
+}
+
+export type TypeRealisationsSkeleton = EntrySkeletonType<TypeRealisationsFields, "realisations">;
+export type TypeRealisations<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeRealisationsSkeleton, Modifiers, Locales>;
+
+export function isTypeRealisations<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeRealisations<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'realisations'
 }

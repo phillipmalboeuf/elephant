@@ -3,12 +3,12 @@
   import type { TypeModelSkeleton } from '$lib/clients/content_types'
 
   import Media from '$lib/components/Media.svelte'
-
+  import Slider from '$lib/components/Slider.svelte'
+  
+  import { downloads } from '$lib/stores'
   import { page } from '$app/stores'
 
   import type { PageData } from './$types' 
-  import Slider from '$lib/components/Slider.svelte';
-  import { downloads } from '$lib/stores';
   export let data: PageData
 
   let model: Entry<TypeModelSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -140,7 +140,6 @@
       background-color: var(--color, $green);
 
       h1 {
-        text-transform: uppercase;
         margin-bottom: $gap * 3;
       }
     }

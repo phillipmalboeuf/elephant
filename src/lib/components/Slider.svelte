@@ -9,6 +9,7 @@
   export let buttons = true
   export let autoheight = true
   export let dots: number = undefined
+  export let slidesPerView = 1
 
   let options: EmblaOptionsType = { loop: true }
   let plugins = [
@@ -25,7 +26,7 @@
 </script>
 
 {#if !disabled}
-<figure class="slider" on:emblaInit={(event) => {
+<figure class="slider" style:--view={`${100 / slidesPerView}%`} on:emblaInit={(event) => {
   slider = event.detail
   slider.on("select", () => active = slider.selectedScrollSnap())
 }} use:emblaCarouselSvelte={{ options, plugins }}>
@@ -69,7 +70,7 @@
   }
     
     :global(.slide) {
-      flex: 0 0 100%;
+      flex: 0 0 var(--view);
       min-width: 0;
     }
 } 
