@@ -19,9 +19,9 @@
     <fieldset class="col {input.fields.type === 'Textarea' ? 'col--8of12' : 'col--4of12'}">
     <label for={item.fields.id + input.fields.id}>{input.fields.label}</label>
     {#if input.fields.type === 'Email'}
-    <input type="email" id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required value="phil@phils.computer" />
+    <input type="email" id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required />
     {:else if input.fields.type === 'Textarea'}
-    <textarea id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required>Message</textarea>
+    <textarea id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required></textarea>
     {:else if input.fields.type === 'Dropdown'}
     <select id={item.fields.id + input.fields.id} name={input.fields.id} required>
       <option disabled></option>
@@ -30,7 +30,7 @@
       {/each}
     </select>
     {:else}
-    <input type="text" id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required value="Name">
+    <input type="text" id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required>
     {/if}
     </fieldset>
     {/each}
