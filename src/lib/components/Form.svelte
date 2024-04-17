@@ -1,0 +1,76 @@
+<script lang="ts">
+  import type { TypeFormSkeleton } from '$lib/clients/content_types'
+  import type { Entry } from 'contentful'
+  import { enhance } from '$app/forms'
+  
+  import Media from './Media.svelte'
+  import Document from '$lib/components/document/index.svelte'
+  import Link from './Link.svelte'
+
+  export let item: Entry<TypeFormSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+</script>
+
+<form class="flex flex--gapped" action={item.fields.action} method="post" use:enhance>
+  <hr>
+  <h2 class="col col--8of12">{item.fields.title}</h2>
+
+  <main class="col col--12of12 flex flex--tight_gapped">
+    {#each item.fields.inputs as input}
+    <fieldset class="col {input.fields.type === 'Textarea' ? 'col--8of12' : 'col--4of12'}">
+    <label for={item.fields.id + input.fields.id}>{input.fields.label}</label>
+    {#if input.fields.type === 'Email'}
+    <input type="email" id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required value="phil@phils.computer" />
+    {:else if input.fields.type === 'Textarea'}
+    <textarea id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required>Message</textarea>
+    {:else if input.fields.type === 'Dropdown'}
+    <select id={item.fields.id + input.fields.id} name={input.fields.id} required>
+      <option disabled></option>
+      {#each input.fields.options as option}
+      <option selected>{option}</option>
+      {/each}
+    </select>
+    {:else}
+    <input type="text" id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required value="Name">
+    {/if}
+    </fieldset>
+    {/each}
+
+    <button class="button--green" type="submit">{item.fields.button}</button>
+  </main>
+</form>
+
+<style lang="scss">
+  form {
+    color: $green_darkish;
+    margin: ($gap * 2) 0 ($gap * 2);
+    padding: 0 ($gap * 2);
+
+    hr {
+      width: 100%;
+    }
+
+    main {
+      position: relative;
+      padding: $base;
+      border-radius: $radius;
+      background-color: $white;
+      flex-direction: column;
+
+      fieldset:has(textarea) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding: $base;
+
+        textarea {
+          height: 100%;
+        }
+      }
+
+      button {
+        margin-top: $base * 8;
+      }
+    }
+  }
+</style>

@@ -25,6 +25,6 @@
 <style lang="scss">
   main,
   nav {
-    padding: $base;
+    margin: $base;
   }
 </style>

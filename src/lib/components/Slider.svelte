@@ -17,7 +17,7 @@
     ...autoheight ? [Autoheight()] : []
   ]
 
-  let slider: EmblaCarouselType
+  export let slider: EmblaCarouselType = undefined
   let active = 0
 
   onDestroy(() => {

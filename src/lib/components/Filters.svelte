@@ -128,6 +128,7 @@
   }
   
   fieldset.button {
+    width: auto;
     cursor: auto;
     display: flex;
     flex-direction: column;
@@ -152,6 +153,10 @@
       min-width: $base * 10;
       padding-bottom: $base * 0.25;
       border-bottom: 1px solid $grey;
+
+      position: static;
+      height: auto;
+      pointer-events: all;
 
       &:first-of-type {
         margin-top: $base * 0.5;

@@ -27,6 +27,21 @@ export function isTypeCollection<Modifiers extends ChainModifiers, Locales exten
     return entry.sys.contentType.sys.id === 'collection'
 }
 
+export interface TypeFormFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    action: EntryFieldTypes.Symbol;
+    inputs?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeInputSkeleton>>;
+    button?: EntryFieldTypes.Symbol;
+}
+
+export type TypeFormSkeleton = EntrySkeletonType<TypeFormFields, "form">;
+export type TypeForm<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeFormSkeleton, Modifiers, Locales>;
+
+export function isTypeForm<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeForm<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'form'
+}
+
 export interface TypeHeroFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
@@ -39,6 +54,20 @@ export type TypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHero<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'hero'
+}
+
+export interface TypeInputFields {
+    label: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    type?: EntryFieldTypes.Symbol<"Dropdown" | "Email" | "Text" | "Textarea">;
+    options?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+}
+
+export type TypeInputSkeleton = EntrySkeletonType<TypeInputFields, "input">;
+export type TypeInput<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeInputSkeleton, Modifiers, Locales>;
+
+export function isTypeInput<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeInput<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'input'
 }
 
 export interface TypeModelFields {
@@ -93,7 +122,7 @@ export interface TypePageFields {
     image?: EntryFieldTypes.AssetLink;
     gallerie?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     link?: EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>;
-    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeHeroSkeleton | TypeNavigationSkeleton | TypeProductSkeleton | TypeProjectSkeleton | TypeRealisationsSkeleton | TypeTextSkeleton>>;
+    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollectionSkeleton | TypeFormSkeleton | TypeHeroSkeleton | TypeNavigationSkeleton | TypeProductSkeleton | TypeProjectSkeleton | TypeRealisationsSkeleton | TypeRepsSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -158,6 +187,36 @@ export type TypeRealisations<Modifiers extends ChainModifiers, Locales extends L
 
 export function isTypeRealisations<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeRealisations<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'realisations'
+}
+
+export interface TypeRepFields {
+    name: EntryFieldTypes.Text;
+    id: EntryFieldTypes.Symbol;
+    city?: EntryFieldTypes.Text;
+    state?: EntryFieldTypes.Text;
+    location: EntryFieldTypes.Location;
+    email?: EntryFieldTypes.Symbol;
+    phone?: EntryFieldTypes.Symbol;
+}
+
+export type TypeRepSkeleton = EntrySkeletonType<TypeRepFields, "rep">;
+export type TypeRep<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeRepSkeleton, Modifiers, Locales>;
+
+export function isTypeRep<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeRep<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'rep'
+}
+
+export interface TypeRepsFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    reps?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeRepSkeleton>>;
+}
+
+export type TypeRepsSkeleton = EntrySkeletonType<TypeRepsFields, "reps">;
+export type TypeReps<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeRepsSkeleton, Modifiers, Locales>;
+
+export function isTypeReps<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeReps<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'reps'
 }
 
 export interface TypeTextFields {

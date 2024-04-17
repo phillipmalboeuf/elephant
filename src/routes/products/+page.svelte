@@ -34,6 +34,6 @@
 <style lang="scss">
   nav,
   main {
-    margin: $gap;
+    margin: $base;
   }
 </style>

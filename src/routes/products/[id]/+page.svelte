@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Entry } from 'contentful'
   import type { TypeModelSkeleton } from '$lib/clients/content_types'
+  import { type EmblaCarouselType } from 'embla-carousel'
 
   import Media from '$lib/components/Media.svelte'
   import Slider from '$lib/components/Slider.svelte'
@@ -12,6 +13,7 @@
   export let data: PageData
 
   let model: Entry<TypeModelSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+  let slider: EmblaCarouselType
 
   $: {
     model = data.product.fields.models?.length
@@ -97,7 +99,7 @@
   <section class="col col--8of12 flex flex--gapped">
     {#if model && model.fields.gallery?.length}
     <figure>
-      <Slider buttons autoheight>
+      <Slider buttons autoheight bind:slider={slider}>
         <ol class="slider__container">
           {#each model.fields.gallery as media}
           <li class="slide">
@@ -107,10 +109,22 @@
         </ol>
       </Slider>
     </figure>
+
+    <div class="flex flex--gapped buttons">
+      {#each model.fields.gallery as media, i}
+      <button on:click={() => slider.scrollTo(i)}>
+        <Media {media} small ar={0.66} />
+      </button>
+      {/each}
+    </div>
+
+    {#if data.product.fields.gallery?.length}
+    <a href="#gallery" class="button button--green col col--12of12">Voir toute la galerie <svg width="23" height="13" viewBox="0 0 23 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L11.5 11L22 1" stroke="currentColor" stroke-width="2"/></svg></a>
+    {/if}
     {/if}
 
     {#if data.product.fields.gallery?.length}
-    <ul class="list--nostyle flex flex--gapped">
+    <ul class="list--nostyle flex flex--gapped" id="gallery">
     {#each data.product.fields.gallery as media}
      <li><Media {media} /></li>
     {/each}
@@ -184,6 +198,21 @@
       position: relative;
       background-color: $white;
       border-radius: $radius;
+    }
+
+    .buttons {
+      flex-wrap: nowrap;
+      button {
+        padding: $base * 0.25;
+        flex: 1;
+        max-width: 33%;
+      }
+    }
+
+    section {
+      .button.col {
+        justify-content: space-between;
+      }
     }
   }
 </style>

@@ -133,8 +133,11 @@ a:hover {
 }
 
 input,
+select,
+textarea,
 button,
 .button {
+	appearance: none;
 	font-size: inherit;
 	color: inherit;
 	font-family: inherit;
@@ -172,10 +175,57 @@ button,
 	}
 }
 
+fieldset {
+	appearance: none;
+	border: none;
+	width: 100%;
+
+	label {
+		pointer-events: none;
+		height: 0;
+		position: relative;
+		z-index: 1;
+		display: block;
+		top: $base * 0.6;
+		left: $base;
+		transition: top 333ms;
+
+		&:has(+ input:not(:placeholder-shown)),
+		&:has(+ textarea:not(:placeholder-shown)),
+		&:has(+ select:not(:invalid)) {
+			font-size: $base * 0.66;
+			top: 1px;
+		}
+	}
+}
+
+input,
+select,
+textarea {
+	width: 100%;
+	background-color: transparent;
+	color: currentColor;
+	border: 1px solid;
+
+	&:focus {
+		outline: 1px solid $yellow;
+		outline-offset: 0px;
+	}
+
+	&:not(:placeholder-shown) {
+		padding: ($base * 0.75) $base ($base * 0.25);
+	}
+}
+
+textarea {
+	height: $base * 10;
+}
+
 input[type = "radio"],
 input[type = "checkbox"] {
 	cursor: pointer;
 	appearance: none;
+	width: auto;
 	padding: ($base * 0.5);
 
 	color: currentColor;
