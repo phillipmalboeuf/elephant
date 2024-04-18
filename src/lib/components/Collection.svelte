@@ -63,6 +63,8 @@
       </li>
       {/each}
     </ol>
+    {:else}
+    <em>Aucun résults de produits</em>
     {/if}
   </main>
 </details>
