@@ -6,6 +6,7 @@
   import Media from './Media.svelte'
   import Document from '$lib/components/document/index.svelte'
   import Link from './Link.svelte'
+  import { page } from '$app/stores';
 
   export let item: Entry<TypeFormSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 </script>
@@ -24,9 +25,9 @@
     <textarea id={item.fields.id + input.fields.id} name={input.fields.id} placeholder=" " required></textarea>
     {:else if input.fields.type === 'Dropdown'}
     <select id={item.fields.id + input.fields.id} name={input.fields.id} required>
-      <option disabled></option>
+      <option disabled selected></option>
       {#each input.fields.options as option}
-      <option selected>{option}</option>
+      <option>{option}</option>
       {/each}
     </select>
     {:else}
@@ -35,7 +36,11 @@
     </fieldset>
     {/each}
 
+    {#if $page.form?.Message}
+    <strong>Thank you, we'll get in touch!</strong>
+    {:else}
     <button class="button--green" type="submit">{item.fields.button}</button>
+    {/if}
   </main>
 </form>
 

@@ -15,7 +15,9 @@
   <figure></figure>
   {/if}
 
+  {#if item.fields.title}
   <h3 class="col col--6of12">{item.fields.title}</h3>
+  {/if}
 
   {#if item.fields.body}
   <main class="col col--6of12 flex flex--gapped">
@@ -35,7 +37,8 @@
 <style lang="scss">
   section {
     color: $green_darkish;
-    margin: ($gap) 0 ($gap * 4);
+    margin: ($gap * 2) 0 ($gap * 4);
+    padding: 0 ($gap * 2);
 
     hr {
       width: 100%;

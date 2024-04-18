@@ -286,10 +286,10 @@ table {
 	}
 
 	tr {
-		&:last-child {
+		&:first-child:last-child {
 			td,
 			th {
-				// border-bottom: 1px solid;
+				border-top: none;
 			}
 		}
 	}
