@@ -3,13 +3,17 @@
 
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
+  import Slider from '$lib/components/Slider.svelte'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types' 
-  import Slider from '$lib/components/Slider.svelte';
   export let data: PageData
+
+  let width: number
 </script>
+
+<svelte:window bind:innerWidth={width} />
 
 <svelte:head>
 	<title>{data.project.fields.title} – Elephant Play</title>
@@ -21,12 +25,12 @@
   <header class="flex flex--gapped">
     <hr>
 
-    <h1 class="h3 col col--7of12">{data.project.fields.title}</h1>
+    <h1 class="h3 col col--7of12 col--mobile--12of12">{data.project.fields.title}</h1>
 
     <hr>
-    <div class="col col--3of12">{data.project.fields.location}</div>
-    <div class="col col--3of12">{data.project.fields.year}</div>
-    <div class="col col--6of12"><p>{data.project.fields.description}</p></div>
+    <div class="col col--3of12 col--mobile--6of12">{data.project.fields.location}</div>
+    <div class="col col--3of12 col--mobile--6of12">{data.project.fields.year}</div>
+    <div class="col col--6of12 col--mobile--12of12"><p>{data.project.fields.description}</p></div>
   </header>
 
   {#if data.project.fields.gallery?.length}
@@ -51,9 +55,9 @@
 
   <aside class="flex flex--tight_gapped">
     <hr>
-    <div class="col col--6of12">Spécifications</div>
+    <div class="col col--6of12 col--mobile--12of12">Spécifications</div>
 
-    <table class="col col--6of12 table--inverse">
+    <table class="col col--6of12 col--mobile--12of12 table--inverse">
       <tr>
         <td>Type d’activité</td>
         <td>{data.project.fields.type}</td>
@@ -72,9 +76,9 @@
   {#if data.project.fields.products?.length}
   <section class="products flex flex--gapped">
     <hr>
-    <h3 class="col col--6of12">Dans ce projet</h3>
+    <h3 class="col col--6of12 col--mobile--12of12">Dans ce projet</h3>
     <div class="col col--12of12">
-      <Slider buttons autoheight slidesPerView={3}>
+      <Slider buttons autoheight slidesPerView={width < 888 ? 1 : 3}>
         <ol class="slider__container">
           {#each data.project.fields.products as product}
           <li class="slide">
@@ -93,6 +97,10 @@
 <style lang="scss">
   main {
     padding: ($base * 2) ($base * 4);
+
+    @media (max-width: $mobile) {
+      padding: ($base);
+    }
   }
 
   header,
@@ -116,8 +124,10 @@
   }
 
   .body {
-    columns: 2;
-    column-gap: $base;
+    @media (min-width: $mobile) {
+      columns: 2;
+      column-gap: $base;
+    }
 
     :global(*) {
       margin-bottom: $base * 0.666;

@@ -10,7 +10,7 @@
 
 <nav class="flex flex--gapped">
   {#each item.fields.links as link}
-  <a class="col col--6of12" href={link.fields.path} style:--color={link.fields.color}>
+  <a class="col col--6of12 col--mobile--12of12" href={link.fields.path} style:--color={link.fields.color}>
     <hr>
     <h4>{link.fields.label}</h4>
   </a>
@@ -25,6 +25,14 @@
       background-color: var(--color, $green);
       min-height: 45vh;
       border-radius: $radius * 0.5;
+
+      @media (max-width: $mobile) {
+        min-height: 33vh;
+
+        h4 {
+          font-size: $base * 1.5;
+        }
+      }
 
       hr {
         margin-bottom: $base * 0.5;

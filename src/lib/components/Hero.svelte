@@ -52,6 +52,10 @@
 
     margin: (-$base) (-$base) 0;
 
+    @media (max-width: $mobile) {
+      min-height: 95vh;
+    }
+
     h1 {
       position: relative;
       z-index: 1;

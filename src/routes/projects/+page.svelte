@@ -13,8 +13,8 @@
 
 <header class="flex flex--gapped">
   <hr>
-  <h1 class="col col--7of12">{data.page.fields.title}</h1>
-  <p class="col col--7of12">{data.page.fields.description}</p>
+  <h1 class="col col--7of12 col--mobile--12of12">{data.page.fields.title}</h1>
+  <p class="col col--7of12 col--mobile--12of12">{data.page.fields.description}</p>
 </header>
 
 <nav class="flex flex--tight_gapped" id={data.page.fields.id}>
@@ -46,6 +46,10 @@
   header {
     padding: $base * 2;
 
+    @media (max-width: $mobile) {
+      padding: ($base * 2) $base $base;
+    }
+
     hr {
       width: 100%;
     }
@@ -54,6 +58,10 @@
   nav {
     padding: $base ($base * 2);
     margin-bottom: $gap;
+
+    @media (max-width: $mobile) {
+      padding: $base $base $base;
+    }
   }
 
   main {

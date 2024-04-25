@@ -8,12 +8,13 @@
   export let disabled = false
   export let buttons = true
   export let autoheight = true
+  export let autoplay = true
   export let dots: number = undefined
   export let slidesPerView = 1
 
   let options: EmblaOptionsType = { loop: true }
   let plugins = [
-    Autoplay({ delay: 2666, stopOnFocusIn: true, stopOnMouseEnter: false, stopOnInteraction: true }),
+    ...autoplay ? [Autoplay({ delay: 2666, stopOnFocusIn: true, stopOnMouseEnter: false, stopOnInteraction: true })] : [],
     ...autoheight ? [Autoheight()] : []
   ]
 
@@ -35,8 +36,8 @@
 
 {#if buttons}
 <nav>
-  <button class="previous" on:click={() => slider.scrollPrev()}><svg width="20" height="20" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L2 11.5L12 22" stroke="black" stroke-width="2"/></svg></button>
-  <button class="next" on:click={() => slider.scrollNext()}><svg width="20" height="20" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 22L11 11.5L0.999999 1" stroke="black" stroke-width="2"/></svg></button>
+  <button class="previous" on:click={() => slider.scrollPrev()}><svg width="20" height="20" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L2 11.5L12 22" stroke="currentColor" stroke-width="2"/></svg></button>
+  <button class="next" on:click={() => slider.scrollNext()}><svg width="20" height="20" viewBox="0 0 13 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 22L11 11.5L0.999999 1" stroke="currentColor" stroke-width="2"/></svg></button>
 </nav>
 {/if}
 
@@ -87,12 +88,12 @@ nav {
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: $mobile) {
-    &:not(.dots) {
-      position: static;
-      gap: $mobile_base;
-    }
-  }
+  // @media (max-width: $mobile) {
+  //   &:not(.dots) {
+  //     position: static;
+  //     gap: $mobile_base;
+  //   }
+  // }
 
   button {
     pointer-events: auto;
@@ -109,11 +110,6 @@ nav {
     bottom: calc(100% + ($base * 0.5));
     right: $base * 0.5;
     transform: none;
-
-    @media (max-width: $mobile) {
-      top: $base * 0.5;
-      bottom: auto;
-    }
 
     gap: $base * 0.333;
 

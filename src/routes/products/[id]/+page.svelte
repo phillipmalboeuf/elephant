@@ -35,7 +35,7 @@
 </nav>
 
 <article class="flex flex--gapped" style:--color={data.collection?.fields.color}>
-  <header class="flex flex--start flex--gapped col col--4of12">
+  <header class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12">
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
     <table class="col col--6of12">
@@ -96,7 +96,7 @@
     {/if}
     {/if}
   </header>
-  <section class="col col--8of12 flex flex--gapped">
+  <section class="col col--8of12 col--mobile--12of12 flex flex--gapped">
     {#if model && model.fields.gallery?.length}
     <figure>
       <Slider buttons autoheight bind:slider={slider}>
@@ -145,8 +145,11 @@
     padding: $base;
 
     header {
-      position: sticky;
-      top: $gap * 3.5;
+      @media (min-width: $mobile) {
+        position: sticky;
+        top: $gap * 3.5;
+      }
+
       padding: $base;
       border-radius: $radius * 0.5;
 
@@ -194,7 +197,7 @@
 
     figure {
       width: 100%;
-      min-height: 50vh;
+      // min-height: 50vh;
       position: relative;
       background-color: $white;
       border-radius: $radius;

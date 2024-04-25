@@ -23,11 +23,11 @@
       <Logotype />
     </a>
   </nav>
-  <nav class="col col--3of12 flex flex--tight_gapped">
+  <nav class="col col--3of12 col--mobile--12of12 flex flex--tight_gapped">
     <a href="/fr" class="button">Français</a>
     <a href="/en" class="button">English</a>
   </nav>
-  <nav class="col col--2of12">
+  <nav class="col col--2of12 col--mobile--6of12">
     {#each social.fields.links as link}
     <Link {link} /><br>
     {/each}
@@ -36,7 +36,7 @@
     <Link {link} /><br>
     {/each}
   </nav>
-  <nav class="col col--2of12">
+  <nav class="col col--2of12 col--mobile--6of12">
     {#each primary.fields.links as link}
     <Link {link} /><br>
     {/each}
@@ -70,15 +70,29 @@
     }
 
     nav {
+      @media (max-width: $mobile) {
+        margin: ($base * 0.5) 0;
+      }
     }
 
     .elephant {
-      margin-bottom: -$gap;
+      @media (min-width: $mobile) {
+        margin-bottom: -$gap;
 
-      :global(svg) {
-        width: 10vw;
-        height: 10vw;
-        transform: translateX(calc((var(--x) * 1px) - 5vw));
+        :global(svg) {
+          width: 10vw;
+          height: 10vw;
+          transform: translateX(calc((var(--x) * 1px) - 5vw));
+        }
+      }
+
+      @media (max-width: $mobile) {
+        // margin-top: -$gap;
+      
+        :global(svg) {
+          width: 33vw;
+          height: 33vw;
+        }
       }
     }
   }

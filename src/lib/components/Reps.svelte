@@ -15,7 +15,7 @@
   }, 666)
 }}>
   <hr>
-  <aside class="col col--4of12">
+  <aside class="col col--4of12 col--mobile--12of12">
     <h3>{item.fields.title}</h3>
 
     <fieldset>
@@ -26,7 +26,7 @@
     </fieldset>
   </aside>
 
-  <main class="col col--8of12">
+  <main class="col col--8of12 col--mobile--12of12">
     <ul class="list--nostyle">
       {#each ($page.data.reps?.items || item.fields.reps) as rep}
       <li class="flex flex--tight_gapped flex--spaced flex--middle">
@@ -49,6 +49,10 @@
   form {
     color: $greenish;
     padding: 0 ($gap * 2);
+
+    @media (max-width: $mobile) {
+      padding: 0;
+    }
 
     hr {
       width: 100%;

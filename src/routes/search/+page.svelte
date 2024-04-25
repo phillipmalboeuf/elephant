@@ -11,8 +11,8 @@
 </script>
 
 <nav class="flex flex--spaced">
-  <div class="col col--4of12"></div>
-  <form class="col col--4of12 flex flex--tight_gapped" action="/search" bind:this={form} on:input={e => {
+  <div class="col col--4of12 col--mobile--12of12"></div>
+  <form class="col col--4of12 col--mobile--12of12 flex flex--tight_gapped" action="/search" bind:this={form} on:input={e => {
     clearTimeout(timeout)
     timeout = setTimeout(() => {
       form.requestSubmit()
