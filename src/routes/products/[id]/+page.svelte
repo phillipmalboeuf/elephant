@@ -99,6 +99,7 @@
   <section class="col col--8of12 col--mobile--12of12 flex flex--gapped">
     {#if model && model.fields.gallery?.length}
     <figure>
+      {#key model.fields.id}
       <Slider buttons autoheight bind:slider={slider}>
         <ol class="slider__container">
           {#each model.fields.gallery as media}
@@ -108,6 +109,7 @@
           {/each}
         </ol>
       </Slider>
+      {/key}
     </figure>
 
     <div class="flex flex--gapped buttons">

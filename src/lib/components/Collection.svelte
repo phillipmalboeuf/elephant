@@ -89,6 +89,17 @@
       color: $green;
     }
 
+    ol {
+      li {
+        figure {
+
+          :global(img) {
+            background-color: $white;
+          }
+        }
+      }
+    }
+
     summary {
       cursor: pointer;
 
