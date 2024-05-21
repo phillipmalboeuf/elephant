@@ -11,7 +11,7 @@
 
   let menu = false
   let search = false
-  let timeout: number
+  let timeout: NodeJS.Timeout
   let form: HTMLFormElement
   let input: HTMLInputElement
 

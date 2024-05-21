@@ -69,17 +69,18 @@
         <th>Spécifications</th>
       </tr>
       <tr>
-        <td>Taille</td>
+        <!-- <td>Taille</td> -->
+        <td>Zone de sécurité</td>
         <td>{model.fields.surfaceX}m x {model.fields.surfaceY}m</td>
       </tr>
       <tr>
         <td>Hauteur de chute</td>
         <td>{model.fields.height}m</td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>Zone de sécurité</td>
         <td>{model.fields.security}</td>
-      </tr>
+      </tr> -->
     </table>
 
     {#if model.fields.downloads?.length}

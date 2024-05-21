@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'
   import Collection from '$lib/components/Collection.svelte'
   import Media from '$lib/components/Media.svelte'
 
   import type { PageData } from './$types'
   export let data: PageData
 
-  let timeout: number
+  let timeout: NodeJS.Timeout
   let form: HTMLFormElement
 </script>
 
@@ -20,7 +20,7 @@
   }}>
     <fieldset>
       <label for="query">Nom du produit ou #</label>
-      <input type="text" name="query" id="query" value={$page.url.searchParams.get("query")} placeholder=" ">
+      <input type="text" name="query" id="query" value={$page.url.searchParams.get("query")} autofocus={!!$page.url.searchParams.get("query")} placeholder=" ">
     </fieldset>
     <button class="button--green" type="submit">Recherche</button>
   </form>
