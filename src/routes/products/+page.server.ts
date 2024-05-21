@@ -19,7 +19,7 @@ export const load = (async ({ locals, url, params }) => {
         // "fields.ageMax[lte]": ageFilter.split('-')[1]
       } : {},
     }),
-    url.searchParams?.size && heightFilter && content.getEntries<TypeModelSkeleton>({
+    url.searchParams?.size && (heightFilter || xFilter || yFilter) && content.getEntries<TypeModelSkeleton>({
       content_type: "model", limit: 300,
       ...heightFilter ? {
         "fields.height[gte]": heightFilter.split('-')[0],
@@ -35,8 +35,6 @@ export const load = (async ({ locals, url, params }) => {
       } : {},
     }),
   ])
-
-  console.log(models.items)
 
   return {
     collections,
