@@ -3,10 +3,12 @@ import { content } from '$lib/clients/contentful'
 import type { Entry } from 'contentful'
 
 export const load = (async ({ locals, url, params }) => {
+  const budgetFilter = url.searchParams.get("budget")
   const ageFilter = url.searchParams.get("age")
   const heightFilter = url.searchParams.get("height")
   const xFilter = url.searchParams.get("x")
   const yFilter = url.searchParams.get("y")
+  const typeFilter = url.searchParams.get("type")
 
   const [collections, pages, products, models] = await Promise.all([
     content.getEntries<TypeCollectionSkeleton>({ content_type: "collection", include: 2 }),
@@ -14,9 +16,15 @@ export const load = (async ({ locals, url, params }) => {
     url.searchParams?.size && content.getEntries<TypeProductSkeleton>({
       content_type: "product", include: 2, limit: 300,
       "fields.models[exists]": true,
+      ...budgetFilter ? {
+        "fields.price": budgetFilter,
+      } : {},
       ...ageFilter ? {
         "fields.ageMin[gte]": ageFilter.split('-')[0],
         // "fields.ageMax[lte]": ageFilter.split('-')[1]
+      } : {},
+      ...typeFilter ? {
+        "fields.types": typeFilter
       } : {},
     }),
     url.searchParams?.size && (heightFilter || xFilter || yFilter) && content.getEntries<TypeModelSkeleton>({

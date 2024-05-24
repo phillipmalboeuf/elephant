@@ -38,15 +38,15 @@
   <header class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12">
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
-    <table class="col col--6of12">
+    <table class="col col--4of12">
       <tr>
         <td>{data.product.fields.sku}</td>
       </tr>
     </table>
-    <table class="col col--6of12">
+    <table class="col col--8of12" style:--length={2}>
       <tr>
         <td>Type d’activité</td>
-        <td>{data.product.fields.type}</td>
+        <td>{data.product.fields.types?.join(', ')}</td>
       </tr>
       <tr>
         <td>Âge</td>

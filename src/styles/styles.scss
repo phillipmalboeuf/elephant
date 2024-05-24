@@ -276,6 +276,7 @@ table {
 		border-top: 1px solid;
 		padding: ($base * 0.5) 0;
 		white-space: pre-line;
+		vertical-align: top;
 		width: calc(100% / var(--length));
 	}
 

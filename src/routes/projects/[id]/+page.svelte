@@ -55,9 +55,9 @@
 
   <aside class="flex flex--tight_gapped">
     <hr>
-    <div class="col col--6of12 col--mobile--12of12">Spécifications</div>
+    <div class="col col--5of12 col--mobile--12of12">Spécifications</div>
 
-    <table class="col col--6of12 col--mobile--12of12 table--inverse">
+    <table class="col col--7of12 col--mobile--12of12 table--inverse">
       <tr>
         <td>Type d’activité</td>
         <td>{data.project.fields.type}</td>

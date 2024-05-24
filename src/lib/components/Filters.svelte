@@ -3,10 +3,22 @@
   import { page } from '$app/stores'
 
   const budgets = [
-    { value: "0-1000", label: "0-1000$" },
-    { value: "1000-10000", label: "1000-10 000$" },
-    { value: "10000-100000", label: "10 000-100 000$" },
-    { value: "100000-2000000", label: "100 000$ et +" }
+    { value: "0$ - 10 000$", label: "0$ - 10 000$" },
+    { value: "10 000$ - 30 000$", label: "10 000$ - 30 000$" },
+    { value: "30 000$ - 60 000$", label: "30 000$ - 60 000$" },
+    { value: "60 000$ - 90 000$", label: "60 000$ - 90 000$" },
+    { value: "90 000$ et plus", label: "90 000$ et +" }
+  ]
+
+  const types = [
+    { value: "Balancer", label: "Balancer" },
+    { value: "Coordination", label: "Coordination" },
+    { value: "Courir", label: "Courir" },
+    { value: "Équilibre", label: "Équilibre" },
+    { value: "Rebondir", label: "Rebondir" },
+    { value: "Sauter", label: "Sauter" },
+    { value: "Socialisation", label: "Socialisation" },
+    { value: "Tourner", label: "Tourner" },
   ]
 
   const ages = [
@@ -41,6 +53,7 @@
 <form class="flex flex--tight_gapped" on:input={e => {
   const query = new URLSearchParams({
     ...e.currentTarget['budget']?.value ? { budget: e.currentTarget['budget'].value } : {},
+    ...e.currentTarget['type']?.value ? { type: e.currentTarget['type'].value } : {},
     ...e.currentTarget['age']?.value ? { age: e.currentTarget['age'].value } : {},
     ...e.currentTarget['x']?.value ? { x: e.currentTarget['x'].value } : {},
     ...e.currentTarget['y']?.value ? { y: e.currentTarget['y'].value } : {},
@@ -54,6 +67,16 @@
     <label for="budget-{value}">
       {label}
       <input checked={$page.url.searchParams.get('budget') === value} type="radio" id="budget-{value}" name="budget" {value} />
+    </label>
+    {/each}
+  </fieldset>
+
+  <fieldset class="button button--green">
+    Type d'activité
+    {#each types as { label, value }}
+    <label for="type-{value}">
+      {label}
+      <input checked={$page.url.searchParams.get('type') === value} type="radio" id="type-{value}" name="type" {value} />
     </label>
     {/each}
   </fieldset>
@@ -103,6 +126,7 @@
     key,
     label: {
       'budget': budgets.find(f => f.value === value)?.label,
+      'type': types.find(f => f.value === value)?.label,
       'age': ages.find(f => f.value === value)?.label,
       'x': surfacesX.find(f => f.value === value)?.label,
       'y': surfacesY.find(f => f.value === value)?.label,
