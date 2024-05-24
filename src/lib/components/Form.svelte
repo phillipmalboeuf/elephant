@@ -75,6 +75,7 @@
 
           textarea {
             height: 100%;
+            font-size: $base;
           }
         }
 
