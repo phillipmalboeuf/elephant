@@ -4,6 +4,7 @@
   
   import Media from './Media.svelte'
   import Slider from './Slider.svelte';
+  import CollectionProduct from './CollectionProduct.svelte';
 
   export let item: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> | { fields: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">['fields'] }
   export let open = undefined
@@ -32,14 +33,7 @@
           {#each item.fields.products as product, i}
           {#if i < 3}
           <li class:col={width > 888} class="col--4of12 col--mobile--12of12 slide">
-            <a href="/collections/{item.fields.id}/{product.fields.id}">
-              <figure>
-                {#if product.fields.thumbnail}
-                <Media media={product.fields.thumbnail} ar={0.75} />
-                {/if}
-              </figure>
-              <h6>{product.fields.title}</h6>
-            </a>
+            <CollectionProduct collection={item} {product} />
           </li>
           {/if}
           {/each}
@@ -61,14 +55,7 @@
     <ol class="list--nostyle flex flex--gapped">
       {#each item.fields.products as product, i}
       <li class="col col--4of12 col--mobile--12of12">
-        <a href="/collections/{item.fields.id}/{product.fields.id}">
-          <figure>
-            {#if product.fields.thumbnail}
-            <Media media={product.fields.thumbnail} ar={0.75} />
-            {/if}
-          </figure>
-          <h6>{product.fields.title}</h6>
-        </a>
+        <CollectionProduct collection={item} {product} />
       </li>
       {/each}
     </ol>
@@ -88,18 +75,7 @@
     &.white {
       color: $green;
     }
-
-    ol {
-      li {
-        figure {
-
-          :global(img) {
-            background-color: $white;
-          }
-        }
-      }
-    }
-
+    
     summary {
       cursor: pointer;
 
@@ -175,10 +151,5 @@
 
   h3 {
     
-  }
-
-  h6 {
-    text-align: center;
-    margin-top: $base;
   }
 </style>

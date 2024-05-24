@@ -8,6 +8,7 @@
   import { page } from '$app/stores'
 
   import type { PageData } from './$types' 
+  import CollectionProduct from '$lib/components/CollectionProduct.svelte';
   export let data: PageData
 
   let width: number
@@ -82,8 +83,7 @@
         <ol class="slider__container">
           {#each data.project.fields.products as product}
           <li class="slide">
-            <Media media={product.fields.thumbnail} ar={1} />
-            <h6>{product.fields.title}</h6>
+            <CollectionProduct {product} />
           </li>
           {/each}
         </ol>
@@ -146,14 +146,5 @@
     position: relative;
     color: $greenish;
     background-color: $white;
-
-    .slide {
-      padding: $gap;
-      
-      h6 {
-        text-align: center;
-        color: $black;
-      }
-    }
   }
 </style>

@@ -109,8 +109,8 @@ h5,
 
 h6,
 .h6 {
-	font-size: $base;
-	font-weight: 700;
+	font-size: $base / $scale;
+	font-weight: 500;
 }
 
 p {
