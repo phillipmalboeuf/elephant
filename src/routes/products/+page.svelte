@@ -1,8 +1,8 @@
 <script lang="ts">
   import Content from '$lib/components/Content.svelte'
   import Filters from '$lib/components/Filters.svelte'
-  import Media from '$lib/components/Media.svelte'
   import Collection from '$lib/components/Collection.svelte'
+  import Search from '$lib/components/Search.svelte'
 
   import { page } from '$app/stores'
 
@@ -10,8 +10,13 @@
   export let data: PageData
 </script>
 
-<nav>
-  <Filters />
+<nav class="flex flex--spaced">
+  <div class="col">
+    <Filters />
+  </div>
+  <div class="col col--4of12 col--mobile--12of12">
+    <Search />
+  </div>
 </nav>
 
 {#if $page.url.searchParams?.size}
@@ -34,6 +39,7 @@
 <style lang="scss">
   nav,
   main {
-    margin: $base;
+    margin: ($base * 2) 0;
+    padding: 0 $base;
   }
 </style>

@@ -2,6 +2,7 @@
   import Media from '$lib/components/Media.svelte'
   import Filters from '$lib/components/Filters.svelte'
   import Collection from '$lib/components/Collection.svelte'
+  import Search from '$lib/components/Search.svelte'
 
   import { page } from '$app/stores'
 
@@ -14,8 +15,13 @@
 	<meta name="description" content="{data.collection.fields.description}" />
 </svelte:head>
 
-<nav>
-  <Filters />
+<nav class="flex flex--spaced">
+  <div class="col">
+    <Filters />
+  </div>
+  <div class="col col--4of12 col--mobile--12of12">
+    <Search />
+  </div>
 </nav>
 
 <main>
@@ -25,6 +31,7 @@
 <style lang="scss">
   main,
   nav {
-    margin: $base;
+    margin: ($base * 2) 0;
+    padding: 0 $base;
   }
 </style>

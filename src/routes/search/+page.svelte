@@ -1,29 +1,19 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import Collection from '$lib/components/Collection.svelte'
-  import Media from '$lib/components/Media.svelte'
+  import Search from '$lib/components/Search.svelte'
 
   import type { PageData } from './$types'
   export let data: PageData
-
-  let timeout: NodeJS.Timeout
-  let form: HTMLFormElement
 </script>
 
 <nav class="flex flex--spaced">
-  <div class="col col--4of12 col--mobile--12of12"></div>
-  <form class="col col--4of12 col--mobile--12of12 flex flex--tight_gapped" action="/search" bind:this={form} on:input={e => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      form.requestSubmit()
-    }, 666)
-  }}>
-    <fieldset>
-      <label for="query">Nom du produit ou #</label>
-      <input type="text" name="query" id="query" value={$page.url.searchParams.get("query")} autofocus={!!$page.url.searchParams.get("query")} placeholder=" ">
-    </fieldset>
-    <button class="button--green" type="submit">Recherche</button>
-  </form>
+  <div class="col">
+    <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> Produits</a>
+  </div>
+  <div class="col col--4of12 col--mobile--12of12">
+    <Search />
+  </div>
 </nav>
 
 <main>
@@ -42,10 +32,5 @@
   main {
     margin: ($base * 2) 0;
     padding: 0 $base;
-
-    fieldset {
-      width: auto;
-      flex: 1;
-    }
   }
 </style>

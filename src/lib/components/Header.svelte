@@ -6,6 +6,7 @@
   import Logo from './Logo.svelte'
   import Logotype from './Logotype.svelte'
   import Link from './Link.svelte'
+  import { page } from '$app/stores';
 
   export let navigation: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 
@@ -29,7 +30,7 @@
   <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
   <nav class="flex flex--gapped flex--middle" on:click|stopPropagation={() => menu = false}>
     {#each navigation.fields.links as link}
-    <Link class="h5" {link} />
+    <Link class="h5 {$page.url.pathname.startsWith(link.fields.path) ? "current" : ""}" {link} />
     {/each}
     <button class="button--green search" on:click|stopPropagation={() => {
       if (width > 888) { 
@@ -90,12 +91,22 @@
     nav {
       width: auto;
 
-      a {
-        
-      }
-
-      :global(.h5) {
+      :global(a.h5) {
         font-size: $base;
+
+        &:hover,
+        &:focus {
+          position: relative;
+          
+          &:before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: 0;
+            width: 100%;
+            border-top: 1.5px solid;
+          }
+        }
       }
 
       button {

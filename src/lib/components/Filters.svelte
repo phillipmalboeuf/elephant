@@ -59,7 +59,7 @@
     ...e.currentTarget['y']?.value ? { y: e.currentTarget['y'].value } : {},
     ...e.currentTarget['height']?.value ? { height: e.currentTarget['height'].value } : {},
   })
-  goto(`?${query.toString()}`)
+  goto(`/products?${query.toString()}`)
 }}>
   <fieldset class="button button--green">
     Budget
@@ -136,8 +136,15 @@
   <button on:click={e => {
     const query = new URLSearchParams($page.url.searchParams)
     query.delete(key)
-    goto(`?${query.toString()}`)
+    goto(`/products?${query.toString()}`)
   }}>{label} <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L1.00004 12" stroke="currentColor" stroke-width="1.35416"/><path d="M12 12L1.00004 1.00004" stroke="currentColor" stroke-width="1.35416"/></svg></button>
+  {/each}
+</main>
+{:else if $page.data.collections}
+<main class="flex flex--tight_gapped">
+  <a href="/products" class="button" class:button--green={!$page.data.collection}>Séries</a>
+  {#each $page.data.collections as collection}
+  <a href="/collections/{collection.fields.id}" class="button" class:button--green={collection.fields.id === $page.data.collection?.fields.id}>{collection.fields.title}</a>
   {/each}
 </main>
 {/if}

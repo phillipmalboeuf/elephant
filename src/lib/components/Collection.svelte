@@ -14,7 +14,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<details {open} style:--color={item.fields.color} class:white={item.fields.color?.toLowerCase() === '#ffffff'}>
+<details id={item.fields.id} {open} style:--color={item.fields.color} class:white={item.fields.color?.toLowerCase() === '#ffffff'}>
   <summary class="flex flex--gapped flex--spaced">
     <hr>
     <h3>{item.fields.title}</h3>
@@ -74,8 +74,12 @@
 
     &.white {
       color: $green;
+
+      li {
+        color: $black;
+      }
     }
-    
+
     summary {
       cursor: pointer;
 
