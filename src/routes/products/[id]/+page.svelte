@@ -34,7 +34,7 @@
   <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> Produits</a>
 </nav>
 
-<article class="flex flex--gapped" style:--color={data.collection?.fields.color}>
+<article class="flex flex--gapped" style:--color={data.collection?.fields.color} class:light={['#fff', '#ffffff'].includes(data.collection?.fields.color)}>
   <header class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12">
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
@@ -162,6 +162,10 @@
       h1 {
         margin-bottom: $gap * 3;
       }
+    }
+
+    &.light header {
+      color: $black;
     }
 
     main {

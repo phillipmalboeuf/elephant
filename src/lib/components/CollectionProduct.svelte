@@ -37,7 +37,7 @@
           position: absolute;
           inset: 0;
           display: none;
-          background-color: $white;
+          // background-color: $white;
         }
       }
     }
@@ -62,7 +62,7 @@
       }
 
       h6 {
-        color: $black;
+        // color: $black;
       }
     }
   }

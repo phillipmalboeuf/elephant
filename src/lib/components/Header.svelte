@@ -29,7 +29,7 @@
   <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
   <nav class="flex flex--gapped flex--middle" on:click|stopPropagation={() => menu = false}>
     {#each navigation.fields.links as link}
-    <Link class="h6" {link} />
+    <Link class="h5" {link} />
     {/each}
     <button class="button--green search" on:click|stopPropagation={() => {
       if (width > 888) { 
@@ -92,6 +92,10 @@
 
       a {
         
+      }
+
+      :global(.h5) {
+        font-size: $base;
       }
 
       button {
@@ -180,7 +184,7 @@
         flex-direction: column;
         align-items: center;
 
-        :global(.h6) {
+        :global(.h5) {
           font-size: $base * 2;
         }
       }
