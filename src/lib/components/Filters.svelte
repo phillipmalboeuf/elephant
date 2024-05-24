@@ -143,8 +143,8 @@
 {:else if $page.data.collections}
 <main class="flex flex--tight_gapped">
   <a href="/products" class="button" class:button--green={!$page.data.collection}>Séries</a>
-  {#each $page.data.collections as collection}
-  <a href="/collections/{collection.fields.id}" class="button" class:button--green={collection.fields.id === $page.data.collection?.fields.id}>{collection.fields.title}</a>
+  {#each $page.data.collections.filter(c => !['popular'].includes(c.fields.id)) as collection}
+  <a href="/collections/{collection.fields.id}" class="button" class:button--green={collection.fields.id === $page.data.collection?.fields.id}>{collection.fields.title.replace(' Series', '')}</a>
   {/each}
 </main>
 {/if}

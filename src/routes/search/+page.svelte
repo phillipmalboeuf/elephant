@@ -7,7 +7,7 @@
   export let data: PageData
 </script>
 
-<nav class="flex flex--spaced">
+<nav class="flex flex--gapped flex--spaced">
   <div class="col">
     <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> Produits</a>
   </div>

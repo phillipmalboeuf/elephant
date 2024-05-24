@@ -15,8 +15,8 @@
 	<meta name="description" content="{data.collection.fields.description}" />
 </svelte:head>
 
-<nav class="flex flex--spaced">
-  <div class="col">
+<nav class="flex flex--gapped flex--spaced">
+  <div class="col col--8of12 col--mobile--12of12">
     <Filters />
   </div>
   <div class="col col--4of12 col--mobile--12of12">
