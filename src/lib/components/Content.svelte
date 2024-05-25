@@ -25,7 +25,7 @@
   {:else if isTypeHero(item)}
   <Hero {item} />
   {:else if isTypeText(item)}
-  <Text {item} />
+  <Text {item} index={i} />
   {:else if isTypeForm(item)}
   <Form {item} />
   {:else if isTypeReps(item)}

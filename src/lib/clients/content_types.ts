@@ -27,6 +27,20 @@ export function isTypeCollection<Modifiers extends ChainModifiers, Locales exten
     return entry.sys.contentType.sys.id === 'collection'
 }
 
+export interface TypeColorsFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    subtitle?: EntryFieldTypes.Symbol;
+    colors?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+}
+
+export type TypeColorsSkeleton = EntrySkeletonType<TypeColorsFields, "colors">;
+export type TypeColors<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeColorsSkeleton, Modifiers, Locales>;
+
+export function isTypeColors<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeColors<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'colors'
+}
+
 export interface TypeFormFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
@@ -231,7 +245,11 @@ export interface TypeTextFields {
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     buttons?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeNavigationLinkSkeleton>>;
     style?: EntryFieldTypes.Symbol<"Overflow">;
+    boxed?: EntryFieldTypes.Boolean;
+    dark?: EntryFieldTypes.Boolean;
+    overflow?: EntryFieldTypes.Boolean;
     body?: EntryFieldTypes.RichText;
+    colors?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeColorsSkeleton>>;
 }
 
 export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;
