@@ -281,6 +281,13 @@ table {
 		width: calc(100% / var(--length));
 	}
 
+	&.table--tight {
+		td,
+		th {
+			padding: ($base * 0.25) 0;
+		}
+	}
+
 	th {
 		border-top: none;
 		text-align: left;
@@ -289,7 +296,7 @@ table {
 
 	tr {
 		&:first-child:last-child {
-			td,
+			td:not(.td--bordered),
 			th {
 				border-top: none;
 			}

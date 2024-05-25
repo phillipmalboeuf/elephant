@@ -38,12 +38,12 @@
   <header class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12">
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
-    <table class="col col--4of12">
+    <table class="table--tight col col--4of12">
       <tr>
-        <td>{data.product.fields.sku}</td>
+        <td class="td--bordered sku">{data.product.fields.sku}</td>
       </tr>
     </table>
-    <table class="col col--8of12" style:--length={2}>
+    <table class="table--tight col col--8of12" style:--length={2}>
       <tr>
         <td>Type d’activité</td>
         <td>{data.product.fields.types?.join(', ')}</td>
@@ -58,15 +58,19 @@
     <main class="col col--12of12">
       <p>Modèle</p>
       {#each data.product.fields.models as model, i}
-      <a href="?model={model.fields.id}" class="button" class:active={$page.url.searchParams.get('model') === model.fields.id}>{model.fields.title} <small>{model.fields.sku}</small></a>
+      <a href="?model={model.fields.id}" class="button" class:active={$page.url.searchParams.get('model') === model.fields.id}><em>{model.fields.title}</em> <small>{model.fields.sku}</small></a>
       {/each}
     </main>
     {/if}
 
     {#if model}
-    <table class="col col--12of12">
+    <table class="table--tight col col--12of12">
       <tr>
         <th>Spécifications</th>
+      </tr>
+      <tr>
+        <td>Capacité</td>
+        <td>{model.fields.capacity}</td>
       </tr>
       <tr>
         <!-- <td>Taille</td> -->
@@ -162,6 +166,14 @@
       h1 {
         margin-bottom: $gap * 3;
       }
+
+      table {
+        font-size: $base * 0.75;
+
+        .sku {
+          font-size: $base * 1.25;
+        }
+      }
     }
 
     &.light header {
@@ -173,8 +185,17 @@
       flex-direction: column;
       gap: $base * 0.25;
 
+      &:first-of-type {
+        margin: $base 0;
+      }
+
       .button {
         justify-content: space-between;
+
+        em {
+          font-style: normal;
+          font-size: $base * 0.85;
+        }
 
         &:not(:hover):not(:focus):not(.active) {
           color: $white;

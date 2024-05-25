@@ -4,11 +4,11 @@
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
   import Slider from '$lib/components/Slider.svelte'
+  import CollectionProduct from '$lib/components/CollectionProduct.svelte'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types' 
-  import CollectionProduct from '$lib/components/CollectionProduct.svelte';
   export let data: PageData
 
   let width: number
