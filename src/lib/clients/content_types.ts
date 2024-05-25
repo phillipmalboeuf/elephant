@@ -107,6 +107,7 @@ export interface TypeNavigationLinkFields {
     path?: EntryFieldTypes.Symbol;
     external?: EntryFieldTypes.Boolean;
     color?: EntryFieldTypes.Symbol;
+    media?: EntryFieldTypes.AssetLink;
 }
 
 export type TypeNavigationLinkSkeleton = EntrySkeletonType<TypeNavigationLinkFields, "navigationLink">;
@@ -169,6 +170,7 @@ export interface TypeProjectFields {
     gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     body?: EntryFieldTypes.RichText;
     products?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProductSkeleton>>;
+    projects?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeProjectSkeleton>>;
 }
 
 export type TypeProjectSkeleton = EntrySkeletonType<TypeProjectFields, "project">;

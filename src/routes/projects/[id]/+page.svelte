@@ -91,6 +91,30 @@
     </div>
   </section>
   {/if}
+
+  {#if data.project.fields.projects?.length}
+  <section class="projects flex flex--gapped">
+    <hr>
+    <h3 class="col col--6of12 col--mobile--12of12">Projets similaires</h3>
+    <div class="col col--12of12">
+      <ol class="list--nostyle flex flex--gapped">
+        {#each data.project.fields.projects as project}
+        <li class="col">
+          <a href="/projects/{project.fields.id}">
+            <hr>
+            <h4>{project.fields.title}</h4>
+            {#if project.fields.thumbnail}
+            <figure>
+              <Media media={project.fields.thumbnail} small />
+            </figure>
+            {/if}
+          </a>
+        </li>
+        {/each}
+      </ol>
+    </div>
+  </section>
+  {/if}
 </main>
 
 
@@ -146,5 +170,67 @@
     position: relative;
     color: $greenish;
     background-color: $white;
+  }
+
+  .projects {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+
+    > hr {
+      margin-top: $base * 1.5;
+    }
+
+    h3 {
+      margin-bottom: $base * 1.5;
+    }
+
+    ol {
+      li {
+        flex: 1;
+
+        a {
+          position: relative;
+          display: block;
+          padding: $base;
+          color: $white;
+          background-color: var(--color, $green);
+          min-height: 45vh;
+          border-radius: $radius * 0.5;
+
+          hr, h4 {
+          }
+
+          hr {
+            margin-bottom: $base * 0.5;
+          }
+        }
+
+        figure {
+
+          :global(img),
+          :global(video) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: $radius * 0.5;
+            opacity: 1;
+            transition: opacity 333ms;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          figure {
+            :global(img),
+            :global(video) {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

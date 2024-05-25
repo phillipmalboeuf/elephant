@@ -12,10 +12,10 @@
   <figure>
     {#if product.fields.thumbnails?.length}
     {#each product.fields.thumbnails as media}
-    <Media {media} ar={0.75} />
+    <Media {media} ar={0.75} pad />
     {/each}
     {:else if product.fields.thumbnail}
-    <Media media={product.fields.thumbnail} ar={0.75} />
+    <Media media={product.fields.thumbnail} ar={0.75} pad />
     {/if}
   </figure>
   <h6>{product.fields.title}</h6>
