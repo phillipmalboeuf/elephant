@@ -93,7 +93,7 @@
   {/if}
 
   {#if data.project.fields.projects?.length}
-  <section class="projects flex flex--gapped">
+  <section class="similar flex flex--gapped">
     <hr>
     <h3 class="col col--6of12 col--mobile--12of12">Projets similaires</h3>
     <div class="col col--12of12">
@@ -172,7 +172,7 @@
     background-color: $white;
   }
 
-  .projects {
+  .similar {
     padding-left: 0;
     padding-right: 0;
     background-color: transparent;
