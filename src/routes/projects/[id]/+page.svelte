@@ -185,8 +185,7 @@
       margin-bottom: $base * 1.5;
     }
 
-    ol {
-      li {
+    ol li {
         flex: 1;
 
         a {
@@ -230,7 +229,7 @@
             }
           }
         }
-      }
+      
     }
   }
 </style>
