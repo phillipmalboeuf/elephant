@@ -166,13 +166,13 @@
     margin: $base 0;
   }
 
-  .products {
+  section.products {
     position: relative;
     color: $greenish;
     background-color: $white;
   }
 
-  .similar {
+  section.similar {
     padding-left: 0;
     padding-right: 0;
     background-color: transparent;
