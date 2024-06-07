@@ -30,7 +30,7 @@
 <main>
   <Projects item={{
     fields: {
-      title: 'Résultats',
+      title: 'Results',
       id: 'results',
       projects: data.projects?.items
     }

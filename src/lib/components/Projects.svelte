@@ -24,7 +24,7 @@
       <h4>{project.fields.title}</h4>
       <div class="flex">
         <p>{project.fields.location}</p>
-        <a class="button button--green" href="/projects/{project.fields.id}">En savoir plus</a>
+        <a class="button button--green" href="/projects/{project.fields.id}">Read more</a>
       </div>
     </aside>
   </li>

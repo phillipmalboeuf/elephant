@@ -7,7 +7,7 @@
     { value: "10 000$ - 30 000$", label: "10 000$ - 30 000$" },
     { value: "30 000$ - 60 000$", label: "30 000$ - 60 000$" },
     { value: "60 000$ - 90 000$", label: "60 000$ - 90 000$" },
-    { value: "90 000$ et plus", label: "90 000$ et +" }
+    { value: "90 000$ et plus", label: "90 000$ +" }
   ]
 
   const types = [
@@ -22,31 +22,31 @@
   ]
 
   const ages = [
-    { value: "0-2", label: "0-2 ans" },
-    { value: "2-5", label: "2-5 ans" },
-    { value: "5-8", label: "5-8 ans" },
-    { value: "8-200", label: "8 ans et +" }
+    { value: "0-2", label: "0-2 years old" },
+    { value: "2-5", label: "2-5 years old" },
+    { value: "5-8", label: "5-8 years old" },
+    { value: "8-200", label: "8 years old +" }
   ]
 
   const surfacesX = [
-    { value: "0-2", label: "0-2 mètres" },
-    { value: "2-5", label: "2-5 mètres" },
-    { value: "5-8", label: "5-8 mètres" },
-    { value: "8-200", label: "8 mètres et +" }
+    { value: "0-2", label: "0-2 meters" },
+    { value: "2-5", label: "2-5 meters" },
+    { value: "5-8", label: "5-8 meters" },
+    { value: "8-200", label: "8 meters +" }
   ]
 
   const surfacesY = [
-    { value: "0-2", label: "0-2 mètres" },
-    { value: "2-5", label: "2-5 mètres" },
-    { value: "5-8", label: "5-8 mètres" },
-    { value: "8-200", label: "8 mètres et +" }
+    { value: "0-2", label: "0-2 meters" },
+    { value: "2-5", label: "2-5 meters" },
+    { value: "5-8", label: "5-8 meters" },
+    { value: "8-200", label: "8 mètres +" }
   ]
 
   const heights = [
-    { value: "0-2", label: "0-2 mètres" },
-    { value: "2-5", label: "2-5 mètres" },
-    { value: "5-8", label: "5-8 mètres" },
-    { value: "8-200", label: "8 mètres et +" }
+    { value: "0-2", label: "0-2 meters" },
+    { value: "2-5", label: "2-5 meters" },
+    { value: "5-8", label: "5-8 meters" },
+    { value: "8-200", label: "8 meters +" }
   ]
 </script>
 
@@ -72,7 +72,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Type d'activité
+    Activity type
     {#each types as { label, value }}
     <label for="type-{value}">
       {label}
@@ -82,7 +82,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Âge
+    Age
     {#each ages as { label, value }}
     <label for="age-{value}">
       {label}
@@ -92,7 +92,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Superficie
+    Surfaces
     <label>Length</label>
     {#each surfacesX as { label, value }}
     <label for="x-{value}">
@@ -110,7 +110,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Chute
+    Drop height
     {#each heights as { label, value }}
     <label for="height-{value}">
       {label}
@@ -142,7 +142,7 @@
 </main>
 {:else if $page.data.collections}
 <main class="flex flex--tight_gapped">
-  <a href="/products" class="button" class:button--green={!$page.data.collection}>Séries</a>
+  <a href="/products" class="button" class:button--green={!$page.data.collection}>Series</a>
   {#each $page.data.collections.filter(c => !['popular'].includes(c.fields.id)) as collection}
   <a href="/collections/{collection.fields.id}" class="button" class:button--green={collection.fields.id === $page.data.collection?.fields.id}>{collection.fields.title.replace(' Series', '')}</a>
   {/each}

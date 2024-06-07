@@ -11,10 +11,10 @@
   // }, 666)
 }}>
   <fieldset>
-    <label for="query">Nom du produit ou #</label>
+    <label for="query">Product name or #</label>
     <input type="text" name="query" id="query" value={$page.url.searchParams.get("query")} autofocus={!!$page.url.searchParams.get("query")} placeholder=" ">
   </fieldset>
-  <button class="button--green" type="submit">Recherche</button>
+  <button class="button--green" type="submit">Search</button>
 </form>
 
 <style lang="scss">
