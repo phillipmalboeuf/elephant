@@ -24,8 +24,8 @@
   const ages = [
     { value: "0-2", label: "0-2 years old" },
     { value: "2-5", label: "2-5 years old" },
-    { value: "5-8", label: "5-8 years old" },
-    { value: "8-200", label: "8 years old +" }
+    { value: "5-12", label: "5-12 years old" },
+    { value: "12-200", label: "12 years old +" }
   ]
 
   const surfacesX = [
