@@ -44,7 +44,7 @@
 
     h6 {
       text-align: center;
-      margin-top: $base * -2;
+      // margin-top: $base * -2;
       position: relative;
       z-index: 2;
     }
