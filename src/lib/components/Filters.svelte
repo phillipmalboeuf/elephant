@@ -1,13 +1,16 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
+  import { languageTag } from '$lib/paraglide/runtime'
+
+  const locale = languageTag()
 
   const budgets = [
     { value: "0$ - 10 000$", label: "0$ - 10 000$" },
     { value: "10 000$ - 30 000$", label: "10 000$ - 30 000$" },
     { value: "30 000$ - 60 000$", label: "30 000$ - 60 000$" },
     { value: "60 000$ - 90 000$", label: "60 000$ - 90 000$" },
-    { value: "90 000$ et plus", label: "90 000$ +" }
+    { value: "90 000$ et plus", label: locale === 'fr' ? "90 000$ et plus" : "90 000$ +" }
   ]
 
   const types = [
@@ -22,31 +25,31 @@
   ]
 
   const ages = [
-    { value: "0-2", label: "0-2 years old" },
-    { value: "2-5", label: "2-5 years old" },
-    { value: "5-12", label: "5-12 years old" },
-    { value: "12-200", label: "12 years old +" }
+    { value: "0-2", label: locale === 'fr' ? "0-2 ans" : "0-2 years old" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 ans" : "2-5 years old" },
+    { value: "5-12", label: locale === 'fr' ? "5-12 ans" : "5-12 years old" },
+    { value: "12-200", label: locale === 'fr' ? "12 ans et plus" : "12 years old +" },
   ]
 
   const surfacesX = [
-    { value: "0-2", label: "0-2 meters" },
-    { value: "2-5", label: "2-5 meters" },
-    { value: "5-8", label: "5-8 meters" },
-    { value: "8-200", label: "8 meters +" }
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : "8 meters +" },
   ]
 
   const surfacesY = [
-    { value: "0-2", label: "0-2 meters" },
-    { value: "2-5", label: "2-5 meters" },
-    { value: "5-8", label: "5-8 meters" },
-    { value: "8-200", label: "8 mètres +" }
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : "8 meters +" },
   ]
 
   const heights = [
-    { value: "0-2", label: "0-2 meters" },
-    { value: "2-5", label: "2-5 meters" },
-    { value: "5-8", label: "5-8 meters" },
-    { value: "8-200", label: "8 meters +" }
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : "8 meters +" },
   ]
 </script>
 
@@ -62,7 +65,7 @@
   goto(`/products?${query.toString()}`)
 }}>
   <fieldset class="button button--green">
-    Budget
+    {locale === 'fr' ? 'Budget' : 'Budget'}
     {#each budgets as { label, value }}
     <label for="budget-{value}">
       {label}
@@ -72,7 +75,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Activity type
+    {locale === 'fr' ? 'Type d\'activité' : 'Activity type'}
     {#each types as { label, value }}
     <label for="type-{value}">
       {label}
@@ -82,7 +85,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Age
+    {locale === 'fr' ? 'Âge' : 'Age'}
     {#each ages as { label, value }}
     <label for="age-{value}">
       {label}
@@ -92,7 +95,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Surfaces
+    {locale === 'fr' ? 'Surfaces' : 'Surfaces'}
     <label>Length</label>
     {#each surfacesX as { label, value }}
     <label for="x-{value}">
@@ -110,7 +113,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    Drop height
+    {locale === 'fr' ? 'Chute' : 'Drop height'}
     {#each heights as { label, value }}
     <label for="height-{value}">
       {label}

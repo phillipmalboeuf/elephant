@@ -6,7 +6,8 @@
   import Logo from './Logo.svelte'
   import Logotype from './Logotype.svelte'
   import Link from './Link.svelte'
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'
+  import { afterNavigate } from '$app/navigation'
 
   export let navigation: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 
@@ -17,6 +18,10 @@
   let input: HTMLInputElement
 
   let width: number = 0
+
+  afterNavigate(() => {
+    menu = false
+  })
 </script>
 
 <svelte:window bind:innerWidth={width} />
@@ -28,11 +33,11 @@
   </a>
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-  <nav class="flex flex--gapped flex--middle" on:click|stopPropagation={() => menu = false}>
+  <nav class="flex flex--gapped flex--middle">
     {#each navigation.fields.links as link}
     <Link class="h5 {$page.url.pathname.startsWith(link.fields.path) ? "current" : ""}" {link} />
     {/each}
-    <button class="button--green search" on:click|stopPropagation={() => {
+    <button class="button--green search" on:click={() => {
       if (width > 888) { 
         search = !search
         search && input.focus()

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { TypeHeroSkeleton, TypeTextSkeleton } from '$lib/clients/content_types'
+  import type { TypeTextSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
   
   import Media from './Media.svelte'
   import Document from '$lib/components/document/index.svelte'
   import Link from './Link.svelte'
-  import Colors from './Colors.svelte';
+  import Colors from './Colors.svelte'
 
   export let index: number
   export let item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
