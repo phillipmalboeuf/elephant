@@ -6,6 +6,10 @@
   import Logotype from './Logotype.svelte'
   import Link from './Link.svelte'
 
+  import { availableLanguageTags, languageTag } from "$lib/paraglide/runtime.js"
+	import { i18n } from '$lib/i18n.js'
+	import { page } from '$app/stores'
+
   export let primary: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   export let social: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   export let contact: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -24,8 +28,14 @@
     </a>
   </nav>
   <nav class="col col--3of12 col--mobile--12of12 flex flex--tight_gapped">
-    <a href="/fr" class="button">Français</a>
-    <a href="/en" class="button">English</a>
+    <a href={i18n.route($page.url.pathname)}
+      data-sveltekit-reload
+      hreflang={'fr'}
+      aria-current={'fr' === languageTag() ? "page" : undefined} class="button">Français</a>
+    <a href={i18n.route($page.url.pathname)}
+      data-sveltekit-reload
+      hreflang={'en'}
+      aria-current={'en' === languageTag() ? "page" : undefined} class="button">English</a>
   </nav>
   <nav class="col col--2of12 col--mobile--6of12">
     {#each social.fields.links as link}
@@ -47,7 +57,7 @@
   </figure>
 
   <hr>
-  <p>© 2024 ElephantPlay.com Tous droits réservés.</p>
+  <p>© 2024 ElephantPlay.com {languageTag() === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}</p>
 </footer>
 
 <style lang="scss">

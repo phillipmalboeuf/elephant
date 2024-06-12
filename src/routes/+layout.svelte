@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { ParaglideJS } from '@inlang/paraglide-sveltekit'
+	import { i18n } from '$lib/i18n'
+
 	import '../styles/styles.scss'
 
 	import Header from '$lib/components/Header.svelte'
@@ -18,6 +21,7 @@
 	{/if}
 </svelte:head>
 
+<ParaglideJS {i18n}>
 <div class="{$page.route.id.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}">
 	<Header navigation={data.primary} />
 
@@ -28,8 +32,7 @@
 	<Downloads />
 	<Footer primary={data.primary} social={data.social} contact={data.contact} />
 </div>
-
-<style lang="scss">
+</ParaglideJS><style lang="scss">
 
 	main {
 		min-height: 100vh;

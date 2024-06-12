@@ -1,5 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores'
+  import { languageTag } from '$lib/paraglide/runtime'
+
   let timeout: NodeJS.Timeout
   let form: HTMLFormElement
 </script>
@@ -11,10 +13,10 @@
   // }, 666)
 }}>
   <fieldset>
-    <label for="query">Product name or #</label>
+    <label for="query">{languageTag() === 'fr' ? 'Nom du produit ou son #' : 'Product name or #'}</label>
     <input type="text" name="query" id="query" value={$page.url.searchParams.get("query")} autofocus={!!$page.url.searchParams.get("query")} placeholder=" ">
   </fieldset>
-  <button class="button--green" type="submit">Search</button>
+  <button class="button--green" type="submit">{languageTag() === 'fr' ? 'Recherche' : 'Search'}</button>
 </form>
 
 <style lang="scss">

@@ -1,11 +1,12 @@
 import type { TypeCollectionSkeleton, TypeProductSkeleton, TypeProjectSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
+import { languageTag } from '$lib/paraglide/runtime.js'
 import type { Entry } from 'contentful'
 
 export const load = (async ({ locals, url, params }) => {
 
   const [project] = await Promise.all([
-    content.getEntries<TypeProjectSkeleton>({ content_type: "project", include: 2, "fields.id": params.id, limit: 1 }),
+    content.getEntries<TypeProjectSkeleton>({ content_type: "project", include: 2, "fields.id": params.id, limit: 1, locale: { fr: 'fr-CA' }[languageTag()] || 'en-US' }),
   ])
 
   return {
