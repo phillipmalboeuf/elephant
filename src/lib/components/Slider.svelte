@@ -61,6 +61,7 @@
   overflow: hidden;
   // cursor: ew-resize;
   position: relative;
+  user-select: none;
 
   :global(.slider__container) {
     list-style: none;
