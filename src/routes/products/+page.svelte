@@ -3,6 +3,7 @@
   import Filters from '$lib/components/Filters.svelte'
   import Collection from '$lib/components/Collection.svelte'
   import Search from '$lib/components/Search.svelte'
+  import { languageTag } from '$lib/paraglide/runtime'
 
   import { page } from '$app/stores'
 
@@ -24,7 +25,7 @@
   <Collection item={{
     fields: {
       id: 'results',
-      title: 'Résultats',
+      title: languageTag() === 'fr' ? 'Résultats' : 'Results',
       color: '#ffffff',
       products: data.products?.items
     }

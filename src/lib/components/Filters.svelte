@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
+  import { i18n } from '$lib/i18n';
   import { languageTag } from '$lib/paraglide/runtime'
 
   const locale = languageTag()
@@ -67,7 +68,7 @@
     ...e.currentTarget['y']?.value ? { y: e.currentTarget['y'].value } : {},
     ...e.currentTarget['height']?.value ? { height: e.currentTarget['height'].value } : {},
   })
-  goto(`/products?${query.toString()}`)
+  goto(i18n.resolveRoute(`/products?${query.toString()}`))
 }}>
   <fieldset class="button button--green">
     {locale === 'fr' ? 'Budget' : 'Budget'}
@@ -144,7 +145,7 @@
   <button on:click={e => {
     const query = new URLSearchParams($page.url.searchParams)
     query.delete(key)
-    goto(`/products?${query.toString()}`)
+    goto(i18n.resolveRoute(`/products?${query.toString()}`))
   }}>{label} <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L1.00004 12" stroke="currentColor" stroke-width="1.35416"/><path d="M12 12L1.00004 1.00004" stroke="currentColor" stroke-width="1.35416"/></svg></button>
   {/each}
 </main>
