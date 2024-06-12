@@ -14,14 +14,19 @@
   ]
 
   const types = [
-    { value: "Balancer", label: "Balancer" },
-    { value: "Coordination", label: "Coordination" },
-    { value: "Courir", label: "Courir" },
-    { value: "Équilibre", label: "Équilibre" },
-    { value: "Rebondir", label: "Rebondir" },
-    { value: "Sauter", label: "Sauter" },
-    { value: "Socialisation", label: "Socialisation" },
-    { value: "Tourner", label: "Tourner" },
+    {value: "Lancer", label: locale === 'fr' ? "Lancer" : "Throw"},
+    {value: "Glisser", label: locale === 'fr' ? "Glisser" : "Slide"},
+    {value: "Socialiser", label: locale === 'fr' ? "Socialiser" : "Socialize"},
+    {value: "Jeux cognitif", label: locale === 'fr' ? "Jeux cognitif" : "Pretend play"},
+    {value: "Sauter", label: locale === 'fr' ? "Sauter" : "Jump"},
+    {value: "Courir", label: locale === 'fr' ? "Courir" : "Run"},
+    {value: "Se suspendre", label: locale === 'fr' ? "Se suspendre" : "Hang"},
+    {value: "Coordination", label: locale === 'fr' ? "Coordination" : "Coordination"},
+    {value: "Balancer", label: locale === 'fr' ? "Balancer" : "Swing"},
+    {value: "Rebondir", label: locale === 'fr' ? "Rebondir" : "Bounce"},
+    {value: "Équilibre", label: locale === 'fr' ? "Équilibre" : "Balance"},
+    {value: "Grimper", label: locale === 'fr' ? "Grimper" : "Climb"},
+    {value: "Tourner", label: locale === 'fr' ? "Tourner" : "Rotating"},
   ]
 
   const ages = [
