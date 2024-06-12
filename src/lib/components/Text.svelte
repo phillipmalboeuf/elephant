@@ -5,6 +5,7 @@
   import Media from './Media.svelte'
   import Document from '$lib/components/document/index.svelte'
   import Link from './Link.svelte'
+  import Colors from './Colors.svelte';
 
   export let index: number
   export let item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -33,15 +34,7 @@
     {#if item.fields.colors?.length}
     <aside class="flex flex--gapped">
       {#each item.fields.colors as color}
-      <div class="flex flex--tight_gapped">
-        <h6><small>{color.fields.title}</small>{#if color.fields.subtitle}<small>{color.fields.subtitle}</small>{/if}</h6>
-        <hr>
-        <ul class="list--nostyle flex flex--tight_gapped">
-          {#each color.fields.colors as c}
-          <li style:--color={c} class:white={c.toLowerCase().startsWith('#fff')}></li>
-          {/each}
-        </ul>
-      </div>
+      <Colors item={color} />
       {/each}
     </aside>
     {/if}
@@ -147,36 +140,7 @@
         }
 
         aside {
-          div {
-            @media (min-width: $mobile) {
-              flex: 1;
-            }
-          }
-
-          h6 {
-            text-transform: none;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-          }
-
-          hr {
-            margin-bottom: $base * 0.25;
-          }
-
-          ul {
-            li {
-              width: $base * 2;
-              height: $base * 2;
-              border-radius: 50%;
-              background-color: var(--color, $black);
-              border: 1.5px solid transparent;
-
-              &.white {
-                border-color: $grey;
-              }
-            }
-          }
+          
         }
       }
 

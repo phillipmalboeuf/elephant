@@ -27,11 +27,26 @@ export function isTypeCollection<Modifiers extends ChainModifiers, Locales exten
     return entry.sys.contentType.sys.id === 'collection'
 }
 
+export interface TypeColorFields {
+    title: EntryFieldTypes.Symbol;
+    sku?: EntryFieldTypes.Symbol;
+    color?: EntryFieldTypes.Symbol;
+    texture?: EntryFieldTypes.AssetLink;
+}
+
+export type TypeColorSkeleton = EntrySkeletonType<TypeColorFields, "color">;
+export type TypeColor<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeColorSkeleton, Modifiers, Locales>;
+
+export function isTypeColor<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeColor<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'color'
+}
+
 export interface TypeColorsFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     subtitle?: EntryFieldTypes.Symbol;
     colors?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    colours?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeColorSkeleton>>;
 }
 
 export type TypeColorsSkeleton = EntrySkeletonType<TypeColorsFields, "colors">;
