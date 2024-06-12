@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Entry } from 'contentful'
   import type { TypeColorSkeleton, TypeColorsSkeleton } from '$lib/clients/content_types'
+  import Media from './Media.svelte'
 
   export let item: Entry<TypeColorsSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
 
@@ -15,7 +16,11 @@
     {#each item.fields.colours as c}
     <button style:--color={c.fields.color} aria-label={c.fields.title} class:white={c.fields.color.toLowerCase().startsWith('#fff')}
       on:focus={() => current = c}
-      on:pointerenter={() => current = c}></button>
+      on:pointerenter={() => current = c}>
+      {#if c.fields.texture}
+      <Media media={c.fields.texture} small ar={1} />
+      {/if}
+    </button>
     {/each}
     {:else if item.fields.colors?.length}
     {#each item.fields.colors as c}
