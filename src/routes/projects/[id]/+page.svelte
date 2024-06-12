@@ -40,9 +40,11 @@
   </figure>
   {/if}
 
+  {#if data.project.fields.body}
   <section class="body">
     <Document body={data.project.fields.body} />
   </section>
+  {/if}
 
   {#if data.project.fields.gallery?.length && data.project.fields.gallery?.length > 1}
   {#each data.project.fields.gallery as media, i}
