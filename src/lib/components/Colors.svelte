@@ -14,6 +14,7 @@
     {#if item.fields.colours?.length}
     {#each item.fields.colours as c}
     <button style:--color={c.fields.color} aria-label={c.fields.title} class:white={c.fields.color.toLowerCase().startsWith('#fff')}
+      on:focus={() => current = c}
       on:pointerenter={() => current = c}></button>
     {/each}
     {:else if item.fields.colors?.length}
