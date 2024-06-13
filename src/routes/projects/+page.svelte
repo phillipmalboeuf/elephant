@@ -3,11 +3,12 @@
   import Filters from '$lib/components/Filters.svelte'
   import Media from '$lib/components/Media.svelte'
   import Collection from '$lib/components/Collection.svelte'
+  import Projects from '$lib/components/Projects.svelte'
+  import { languageTag } from '$lib/paraglide/runtime'
 
   import { page } from '$app/stores'
 
   import type { PageData } from './$types'
-  import Projects from '$lib/components/Projects.svelte';
   export let data: PageData
 </script>
 
@@ -19,7 +20,7 @@
 
 <nav class="flex flex--tight_gapped" id={data.page.fields.id}>
   {#if data.category}
-  <a href="/{data.page.fields.id}#{data.page.fields.id}" class="button">Tous</a>
+  <a href="/{data.page.fields.id}#{data.page.fields.id}" class="button">{languageTag() === 'fr' ? 'Tous' : 'All'}</a>
   {/if}
   {#each data.categories as category}
   <a href="/{data.page.fields.id}?category={category.id}#{data.page.fields.id}" class="button" class:active={data.category && data.category.id === category.id}>{category.title}</a>
