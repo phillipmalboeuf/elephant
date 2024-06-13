@@ -32,7 +32,7 @@
       <li class="flex flex--tight_gapped flex--spaced flex--middle">
         <div>
           {rep.fields.name}<br>
-          <strong>{rep.fields.city}, {rep.fields.state}</strong>
+          <strong>{rep.fields.city}, {rep.fields.state}{#if rep.fields.plus}, {rep.fields.plus}{/if}</strong>
         </div>
         {#if rep.fields.email}
         <a href="mailto:{rep.fields.email}"><svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29.25 0H0.75C0.3375 0 0 0.333333 0 0.740741V19.2593C0 19.6667 0.3375 20 0.75 20H29.25C29.6625 20 30 19.6667 30 19.2593V0.740741C30 0.333333 29.6625 0 29.25 0ZM27.45 1.48148L15 13.7778L2.55 1.48148H27.45ZM1.5 2.51852L9.075 10L1.5 17.4815V2.51852ZM2.5875 18.5185L10.125 11.037L14.475 15.3333C14.625 15.4815 14.8125 15.5556 15 15.5556C15.1875 15.5556 15.375 15.4815 15.525 15.3333L19.875 11.037L27.4125 18.5185H2.5875ZM28.5 17.4815L20.925 10L28.5 2.51852V17.4815Z" /></svg></a>
