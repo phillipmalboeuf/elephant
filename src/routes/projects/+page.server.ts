@@ -15,8 +15,8 @@ export const load = (async ({ locals, url, params }) => {
     count: number
   }} = {}
 
-  all.items.forEach(projet => {
-    projet.fields.categories?.forEach(category => {
+  all.items.filter(projet => projet).forEach(projet => {
+    projet.fields?.categories?.forEach(category => {
       if (categories[category.fields.id]) {
         categories[category.fields.id].count += 1
       } else {
