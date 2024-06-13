@@ -4,8 +4,8 @@
   
   import Media from './Media.svelte'
   import Slider from './Slider.svelte';
-  import CollectionProduct from './CollectionProduct.svelte';
-  import { languageTag } from '$lib/paraglide/runtime';
+  import CollectionProduct from './CollectionProduct.svelte'
+  import { languageTag } from '$lib/paraglide/runtime'
 
   export let item: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> | { fields: Entry<TypeCollectionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">['fields'] }
   export let open = undefined

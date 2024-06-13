@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
-  import { i18n } from '$lib/i18n';
+  import { i18n } from '$lib/i18n'
   import { languageTag } from '$lib/paraglide/runtime'
 
   const locale = languageTag()
@@ -119,7 +119,7 @@
   </fieldset>
 
   <fieldset class="button button--green">
-    {locale === 'fr' ? 'Chute' : 'Drop height'}
+    {locale === 'fr' ? 'Chute' : 'Fall height'}
     {#each heights as { label, value }}
     <label for="height-{value}">
       {label}

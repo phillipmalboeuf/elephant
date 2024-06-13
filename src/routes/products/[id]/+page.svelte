@@ -16,6 +16,25 @@
   let model: Entry<TypeModelSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   let slider: EmblaCarouselType
 
+  const locale = languageTag()
+
+  const types = {
+    "Lancer": locale === 'fr' ? "Lancer" : "Throw",
+    "Glisser": locale === 'fr' ? "Glisser" : "Slide",
+    "Socialiser": locale === 'fr' ? "Socialiser" : "Socialize",
+    "Jeux cognitif": locale === 'fr' ? "Jeux cognitif" : "Pretend play",
+    "Sauter": locale === 'fr' ? "Sauter" : "Jump",
+    "Courir": locale === 'fr' ? "Courir" : "Run",
+    "Se suspendre": locale === 'fr' ? "Se suspendre" : "Hang",
+    "Coordination": locale === 'fr' ? "Coordination" : "Coordination",
+    "Balancer": locale === 'fr' ? "Balancer" : "Swing",
+    "Rebondir": locale === 'fr' ? "Rebondir" : "Bounce",
+    "Équilibre": locale === 'fr' ? "Équilibre" : "Balance",
+    "Grimper": locale === 'fr' ? "Grimper" : "Climb",
+    "Tourner": locale === 'fr' ? "Tourner" : "Rotating",
+  }
+
+
   $: {
     model = data.product.fields.models?.length
       ? $page.url.searchParams.has('model') ? data.product.fields.models.find(model => model.fields.id === $page.url.searchParams.get('model')) : data.product.fields.models[0]
@@ -32,7 +51,7 @@
   {#if data.collection}
   <a href="/collections/{data.collection.fields.id}" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> {languageTag() === 'fr' ? 'Retour à' : 'Return to'} {data.collection.fields.title}</a>
   {/if}
-  <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> Produits</a>
+  <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> {languageTag() === 'fr' ? 'Produits' : 'Products'}</a>
 </nav>
 
 <article class="flex flex--gapped" style:--color={data.collection?.fields.color} class:light={['#fff', '#ffffff'].includes(data.collection?.fields.color)}>
@@ -46,18 +65,18 @@
     </table>
     <table class="table--tight col col--8of12" style:--length={2}>
       <tr>
-        <td>Type d’activité</td>
-        <td>{data.product.fields.types?.join(', ')}</td>
+        <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
+        <td>{data.product.fields.types?.map(t => types[t] || t).join(', ')}</td>
       </tr>
       <tr>
-        <td>Âge</td>
+        <td>{languageTag() === 'fr' ? 'Âge' : 'Age'}</td>
         <td>{data.product.fields.ageMin}-{data.product.fields.ageMax}</td>
       </tr>
     </table>
 
     {#if data.product.fields.models?.length}
     <main class="col col--12of12">
-      <p>Modèle</p>
+      <p>{languageTag() === 'fr' ? 'Modèle' : 'Model'}</p>
       {#each data.product.fields.models as model, i}
       <a href="?model={model.fields.id}" class="button" class:active={$page.url.searchParams.get('model') === model.fields.id}><em>{model.fields.title}</em> <small>{model.fields.sku}</small></a>
       {/each}
@@ -67,19 +86,19 @@
     {#if model}
     <table class="table--tight col col--12of12">
       <tr>
-        <th>Spécifications</th>
+        <th>{languageTag() === 'fr' ? 'Spécifications' : 'Specifications'}</th>
       </tr>
       <tr>
-        <td>Capacité</td>
+        <td>{languageTag() === 'fr' ? 'Capacité' : 'Capacity'}</td>
         <td>{model.fields.capacity}</td>
       </tr>
       <tr>
         <!-- <td>Taille</td> -->
-        <td>Zone de sécurité</td>
+        <td>{languageTag() === 'fr' ? 'Aire de protection' : 'Use zone'}</td>
         <td>{model.fields.surfaceX}m x {model.fields.surfaceY}m</td>
       </tr>
       <tr>
-        <td>Hauteur de chute</td>
+        <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
         <td>{model.fields.height}m</td>
       </tr>
       <!-- <tr>
