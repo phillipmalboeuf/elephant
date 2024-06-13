@@ -23,7 +23,7 @@
     {#if item.fields.id === "products"}
     <a href="/products" class="button button--green">{languageTag() === 'fr' ? 'Voir tous les produits' : 'See all products'}</a>
     {:else}
-    <button class="button--none"><span>{item.fields.title}</span> <svg width="17" height="9" viewBox="0 0 17 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L8.5 8L16 1" stroke="currentColor"/></svg></button>
+    <button class="button--none"><span class={languageTag()}>{item.fields.title}</span> <svg width="17" height="9" viewBox="0 0 17 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L8.5 8L16 1" stroke="currentColor"/></svg></button>
     {/if}
     {/if}
 
@@ -47,7 +47,7 @@
   <main class="flex flex--gapped">
     {#if item.fields.description}
     <hr>
-    <p class="col col--6of12 col--mobile--12of12">À propos de cette série</p>
+    <p class="col col--6of12 col--mobile--12of12">{languageTag() === 'fr' ? 'À propos de cette série' : 'About this series'}</p>
     <p class="col col--6of12 col--mobile--12of12">{item.fields.description}</p>
     <hr>
     {/if}
@@ -89,6 +89,10 @@
 
         span:before {
           content: "See all from ";
+        }
+
+        span.fr:before {
+          content: "Voir le tout de ";
         }
 
         @media (max-width: $mobile) {
@@ -140,6 +144,10 @@
 
         span:before {
           content: "See less from ";
+        }
+
+        span.fr:before {
+          content: "Voir l'aperçu de ";
         }
 
         svg {

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Entry } from 'contentful'
+  import { languageTag } from '$lib/paraglide/runtime'
   import type { TypeModelSkeleton } from '$lib/clients/content_types'
   import { type EmblaCarouselType } from 'embla-carousel'
 
@@ -29,7 +30,7 @@
 
 <nav class="flex flex--tight_gapped">
   {#if data.collection}
-  <a href="/collections/{data.collection.fields.id}" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> Retour à {data.collection.fields.title}</a>
+  <a href="/collections/{data.collection.fields.id}" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> {languageTag() === 'fr' ? 'Retour à' : 'Return to'} {data.collection.fields.title}</a>
   {/if}
   <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> Produits</a>
 </nav>

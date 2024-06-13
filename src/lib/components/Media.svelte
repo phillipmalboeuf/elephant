@@ -33,7 +33,7 @@
   }
 </style>
 
-{#if media}
+{#if media && media.fields.file}
 {#if typeof media !== 'string'}
 {#if media.fields.file.contentType.startsWith('video/')}
 <!-- svelte-ignore a11y-media-has-caption -->
