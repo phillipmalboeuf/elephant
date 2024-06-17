@@ -175,6 +175,9 @@
       @media (min-width: $mobile) {
         position: sticky;
         top: $gap * 3.5;
+
+        max-height: calc(100vh - ($gap * 7));
+        overflow-y: auto;
       }
 
       padding: $base;
