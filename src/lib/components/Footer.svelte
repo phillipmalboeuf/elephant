@@ -31,11 +31,15 @@
     <a href={i18n.route($page.url.pathname)}
       data-sveltekit-reload
       hreflang={'fr'}
-      aria-current={'fr' === languageTag() ? "page" : undefined} class="button">Français</a>
+      aria-current={languageTag() === 'fr' ? "page" : undefined} class="button">Français</a>
     <a href={i18n.route($page.url.pathname)}
       data-sveltekit-reload
       hreflang={'en'}
-      aria-current={'en' === languageTag() ? "page" : undefined} class="button">English</a>
+      aria-current={languageTag().startsWith('en') ? "page" : undefined} class="button">English</a>
+    <a href={i18n.route($page.url.pathname)}
+      data-sveltekit-reload
+      hreflang={'en-US'}
+      aria-current={languageTag() === 'en-US' ? "page" : undefined} class="button">US</a>
   </nav>
   <nav class="col col--2of12 col--mobile--6of12">
     {#each social.fields.links as link}
@@ -82,6 +86,17 @@
     nav {
       @media (max-width: $mobile) {
         margin: ($base * 0.5) 0;
+      }
+
+      a[hreflang] {
+        &:not([aria-current="page"]) {
+          opacity: 0.75;
+
+          &:hover,
+          &:focus {
+            opacity: 1;
+          }
+        }
       }
     }
 

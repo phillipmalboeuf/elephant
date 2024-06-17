@@ -38,24 +38,24 @@
   ]
 
   const surfacesX = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : "0-2 meters" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : "2-5 meters" },
-    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : "5-8 meters" },
-    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : "8 meters +" },
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-2 feet" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "2-5 feet" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "8 feet +" : "8 meters +" },
   ]
 
   const surfacesY = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : "0-2 meters" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : "2-5 meters" },
-    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : "5-8 meters" },
-    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : "8 meters +" },
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-2 feet" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "2-5 feet" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "8 feet +" : "8 meters +" },
   ]
 
   const heights = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : "0-2 meters" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : "2-5 meters" },
-    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : "5-8 meters" },
-    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : "8 meters +" },
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-2 feet" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "2-5 feet" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "8 feet +" : "8 meters +" },
   ]
 </script>
 

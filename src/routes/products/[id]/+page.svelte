@@ -11,6 +11,7 @@
   import { page } from '$app/stores'
 
   import type { PageData } from './$types' 
+  import { feet } from '$lib/formatters';
   export let data: PageData
 
   let model: Entry<TypeModelSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -95,11 +96,11 @@
       <tr>
         <!-- <td>Taille</td> -->
         <td>{languageTag() === 'fr' ? 'Aire de protection' : 'Use zone'}</td>
-        <td>{model.fields.surfaceX}m x {model.fields.surfaceY}m</td>
+        <td>{feet(languageTag() === 'en-US' ? (model.fields.surfaceXASTM || model.fields.surfaceX) : model.fields.surfaceX)} x {feet(languageTag() === 'en-US' ? (model.fields.surfaceYASTM || model.fields.surfaceY) : model.fields.surfaceY)}</td>
       </tr>
       <tr>
         <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
-        <td>{model.fields.height}m</td>
+        <td>{feet(model.fields.height)}</td>
       </tr>
       <!-- <tr>
         <td>Zone de sécurité</td>

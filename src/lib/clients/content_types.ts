@@ -105,6 +105,8 @@ export interface TypeModelFields {
     sku: EntryFieldTypes.Symbol;
     surfaceX: EntryFieldTypes.Number;
     surfaceY: EntryFieldTypes.Number;
+    surfaceXASTM?: EntryFieldTypes.Number;
+    surfaceYASTM?: EntryFieldTypes.Number;
     height: EntryFieldTypes.Number;
     capacity?: EntryFieldTypes.Integer;
     security?: EntryFieldTypes.Symbol;
