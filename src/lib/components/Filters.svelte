@@ -102,14 +102,14 @@
 
   <fieldset class="button button--green">
     {locale === 'fr' ? 'Surfaces' : 'Surfaces'}
-    <label>Length</label>
+    <label>{locale === 'fr' ? 'Largeur' : 'Width'}</label>
     {#each surfacesX as { label, value }}
     <label for="x-{value}">
       {label}
       <input checked={$page.url.searchParams.get('x') === value} type="radio" id="x-{value}" name="x" {value} />
     </label>
     {/each}
-    <label>Breadth</label>
+    <label>{locale === 'fr' ? 'Longueur' : 'Length'}</label>
     {#each surfacesY as { label, value }}
     <label for="y-{value}">
       {label}

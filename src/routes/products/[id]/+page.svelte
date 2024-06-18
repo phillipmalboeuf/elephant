@@ -65,13 +65,15 @@
       </tr>
     </table>
     <table class="table--tight col col--8of12" style:--length={2}>
+      {#if data.product.fields.types?.length}
       <tr>
         <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
         <td>{data.product.fields.types?.map(t => types[t] || t).join(', ')}</td>
       </tr>
+      {/if}
       <tr>
         <td>{languageTag() === 'fr' ? 'Âge' : 'Age'}</td>
-        <td>{data.product.fields.ageMin}-{data.product.fields.ageMax}</td>
+        <td>{#if data.product.fields.ageMin}{data.product.fields.ageMin}{#if data.product.fields.ageMax}-{data.product.fields.ageMax}{:else}+{/if}{:else}{languageTag() === 'fr' ? 'Tous' : 'All'}{/if}</td>
       </tr>
     </table>
 
@@ -89,10 +91,12 @@
       <tr>
         <th>{languageTag() === 'fr' ? 'Spécifications' : 'Specifications'}</th>
       </tr>
+      {#if model.fields.capacity}
       <tr>
         <td>{languageTag() === 'fr' ? 'Capacité' : 'Capacity'}</td>
         <td>{model.fields.capacity}</td>
       </tr>
+      {/if}
       <tr>
         <!-- <td>Taille</td> -->
         <td>{languageTag() === 'fr' ? 'Aire de protection' : 'Use zone'}</td>
