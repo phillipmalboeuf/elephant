@@ -47,13 +47,15 @@
   {/if}
 
   {#if data.project.fields.gallery?.length && data.project.fields.gallery?.length > 1}
+  <section class="gallery flex flex--gapped">
   {#each data.project.fields.gallery as media, i}
-  {#if i > 0}
-  <figure>
-    <Media {media} />
-  </figure>
-  {/if}
+    {#if i > 0}
+    <figure class="col {media.fields.file.details.image.width < media.fields.file.details.image.height ? 'col--6of12 col--mobile--12of12' : 'col--12of12'}">
+      <Media {media} />
+    </figure>
+    {/if}
   {/each}
+  </section>
   {/if}
 
   <aside class="flex flex--tight_gapped">
@@ -165,7 +167,19 @@
   }
   
   figure {
-    margin: $base 0;
+    // margin: $base 0;
+    max-height: 90vh;
+
+    :global(img),
+    :global(video) {
+      max-height: 90vh;
+      object-fit: cover;
+    }
+  }
+
+  section.gallery {
+    padding: 0;
+    background-color: transparent;
   }
 
   section.products {
