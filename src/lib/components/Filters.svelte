@@ -70,7 +70,8 @@
   })
   goto(i18n.resolveRoute(`/products?${query.toString()}`))
 }}>
-  <fieldset class="button button--green">
+  <fieldset>
+    <div class="button button--green">
     {locale === 'fr' ? 'Budget' : 'Budget'}
     {#each budgets as { label, value }}
     <label for="budget-{value}">
@@ -78,9 +79,11 @@
       <input checked={$page.url.searchParams.get('budget') === value} type="radio" id="budget-{value}" name="budget" {value} />
     </label>
     {/each}
+    </div>
   </fieldset>
 
-  <fieldset class="button button--green">
+  <fieldset>
+    <div class="button button--green">
     {locale === 'fr' ? 'Type d\'activité' : 'Activity type'}
     {#each types as { label, value }}
     <label for="type-{value}">
@@ -88,9 +91,11 @@
       <input checked={$page.url.searchParams.get('type') === value} type="radio" id="type-{value}" name="type" {value} />
     </label>
     {/each}
+    </div>
   </fieldset>
 
-  <fieldset class="button button--green">
+  <fieldset>
+    <div class="button button--green">
     {locale === 'fr' ? 'Âge' : 'Age'}
     {#each ages as { label, value }}
     <label for="age-{value}">
@@ -98,9 +103,11 @@
       <input checked={$page.url.searchParams.get('age') === value} type="radio" id="age-{value}" name="age" {value} />
     </label>
     {/each}
+    </div>
   </fieldset>
 
-  <fieldset class="button button--green">
+  <fieldset>
+    <div class="button button--green">
     {locale === 'fr' ? 'Surfaces' : 'Surfaces'}
     <label>{locale === 'fr' ? 'Largeur' : 'Width'}</label>
     {#each surfacesX as { label, value }}
@@ -116,9 +123,11 @@
       <input checked={$page.url.searchParams.get('y') === value} type="radio" id="y-{value}" name="y" {value} />
     </label>
     {/each}
+    </div>
   </fieldset>
 
-  <fieldset class="button button--green">
+  <fieldset>
+    <div class="button button--green">
     {locale === 'fr' ? 'Chute' : 'Fall height'}
     {#each heights as { label, value }}
     <label for="height-{value}">
@@ -126,6 +135,7 @@
       <input checked={$page.url.searchParams.get('height') === value} type="radio" id="height-{value}" name="height" {value} />
     </label>
     {/each}
+    </div>
   </fieldset>
 </form>
 
@@ -162,26 +172,31 @@
   form {
     position: relative;
     z-index: 2;
-    
-    height: $base * 2;
-    overflow: visible;
   }
   
-  fieldset.button {
+  fieldset {
     width: auto;
     cursor: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 
-    &:hover,
-    &:focus,
-    &:has(input:focus) {
-      color: $green_dark;
-      background-color: $white;
+    height: $base * 2;
+    overflow: visible;
 
-      label {
-        display: flex;
+    .button {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &:hover,
+      &:focus,
+      &:has(input:focus) {
+        position: relative;
+        z-index: 2;
+        color: $green_dark;
+        background-color: $white;
+
+        label {
+          display: flex;
+        }
       }
     }
 
