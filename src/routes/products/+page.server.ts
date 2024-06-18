@@ -21,8 +21,8 @@ export const load = (async ({ locals, url, params }) => {
         "fields.price": budgetFilter,
       } : {},
       ...ageFilter ? {
-        "fields.ageMin[gte]": ageFilter.split('-')[0],
-        // "fields.ageMax[lte]": ageFilter.split('-')[1]
+        "fields.ageMin[lt]": ageFilter.split('-')[1],
+        "fields.ageMax[gt]": ageFilter.split('-')[0]
       } : {},
       ...typeFilter ? {
         "fields.types": typeFilter

@@ -31,31 +31,31 @@
   ]
 
   const ages = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 ans" : "0-2 years old" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 ans" : "2-5 years old" },
+    { value: "0-2", label: locale === 'fr' ? "moins que 18 mois" : locale === 'en-US' ? "less than 2 years old" : "less than 18 months old" },
+    { value: "2-5", label: locale === 'fr' ? "18 mois à 5 ans" : locale === 'en-US' ? "2-5 years old" : "18 months-5 years old" },
     { value: "5-12", label: locale === 'fr' ? "5-12 ans" : "5-12 years old" },
     { value: "12-200", label: locale === 'fr' ? "12 ans et plus" : "12 years old +" },
   ]
 
   const surfacesX = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-2 feet" : "0-2 meters" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "2-5 feet" : "2-5 meters" },
-    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
-    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "8 feet +" : "8 meters +" },
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-6 feet" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "6-16 feet" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "16-26 feet" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "26 feet +" : "8 meters +" },
   ]
 
   const surfacesY = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-2 feet" : "0-2 meters" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "2-5 feet" : "2-5 meters" },
-    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
-    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "8 feet +" : "8 meters +" },
+    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-6 feet" : "0-2 meters" },
+    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "6-16 feet" : "2-5 meters" },
+    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "16-26 feet" : "5-8 meters" },
+    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "26 feet +" : "8 meters +" },
   ]
 
   const heights = [
-    { value: "0-2", label: locale === 'fr' ? "0-2 mètres" : locale === 'en-US' ? "0-2 feet" : "0-2 meters" },
-    { value: "2-5", label: locale === 'fr' ? "2-5 mètres" : locale === 'en-US' ? "2-5 feet" : "2-5 meters" },
-    { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
-    { value: "8-200", label: locale === 'fr' ? "8 mètres et plus" : locale === 'en-US' ? "8 feet +" : "8 meters +" },
+    { value: "0-1", label: locale === 'fr' ? "moins de 1 mètre" : locale === 'en-US' ? "0-3 feet" : "less than 1 meter" },
+    { value: "1-2", label: locale === 'fr' ? "1-2 mètres" : locale === 'en-US' ? "3-6 feet" : "1-2 meters" },
+    // { value: "5-8", label: locale === 'fr' ? "5-8 mètres" : locale === 'en-US' ? "5-8 feet" : "5-8 meters" },
+    { value: "2-200", label: locale === 'fr' ? "2 mètres et plus" : locale === 'en-US' ? "6 feet +" : "2 meters +" },
   ]
 </script>
 
