@@ -147,6 +147,7 @@
       {/key}
     </figure>
 
+    {#if model.fields.gallery?.length > 1}
     <div class="flex flex--gapped buttons">
       {#each model.fields.gallery as media, i}
       <button on:click={() => slider.scrollTo(i)}>
@@ -154,6 +155,7 @@
       </button>
       {/each}
     </div>
+    {/if}
 
     {#if data.product.fields.gallery?.length}
     <a href="#gallery" class="button button--green col col--12of12">Voir toute la galerie <svg width="23" height="13" viewBox="0 0 23 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L11.5 11L22 1" stroke="currentColor" stroke-width="2"/></svg></a>
