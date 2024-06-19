@@ -61,7 +61,7 @@
 </nav>
 
 <article class="flex flex--gapped" style:--color={data.collection?.fields.color} class:light={['#fff', '#ffffff'].includes(data.collection?.fields.color)}>
-  <header bind:this={header} class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12" style:top={(header && height) ? (header.clientHeight > height) ? (height - header.clientHeight - 20)+"px" : undefined : undefined}>
+  <header bind:this={header} class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12" style:top={(header && height) ? (header.clientHeight > height - 160) ? (height - header.clientHeight - 20)+"px" : undefined : undefined}>
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
     <table class="table--tight col col--4of12 col--mobile--12of12">
