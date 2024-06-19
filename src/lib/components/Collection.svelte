@@ -29,8 +29,19 @@
 
     <figure>
       {#if item.fields.products?.length}
-      <Slider disabled={width > 888} buttons autoplay={false} autoheight={false}>
-        <ol class:flex={width > 888} class="list--nostyle flex--gapped slider__container">
+      {#if width > 888}
+      <ol class="list--nostyle flex flex--gapped slider__container">
+        {#each item.fields.products as product, i}
+        {#if i < 3}
+        <li class:col={width > 888} class="col--4of12 col--mobile--12of12 slide">
+          <CollectionProduct collection={item} {product} />
+        </li>
+        {/if}
+        {/each}
+      </ol>
+      {:else}
+      <Slider buttons autoplay={false} autoheight={false}>
+        <ol class="list--nostyle flex--gapped slider__container">
           {#each item.fields.products as product, i}
           {#if i < 3}
           <li class:col={width > 888} class="col--4of12 col--mobile--12of12 slide">
@@ -40,6 +51,7 @@
           {/each}
         </ol>
       </Slider>
+      {/if}
       {/if}
     </figure>
   </summary>

@@ -59,12 +59,12 @@
   <header class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12">
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
-    <table class="table--tight col col--4of12">
+    <table class="table--tight col col--4of12 col--mobile--12of12">
       <tr>
         <td class="td--bordered sku">{data.product.fields.sku}</td>
       </tr>
     </table>
-    <table class="table--tight col col--8of12" style:--length={2}>
+    <table class="table--tight col col--8of12 col--mobile--12of12" style:--length={2}>
       {#if data.product.fields.types?.length}
       <tr>
         <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
@@ -72,8 +72,8 @@
       </tr>
       {/if}
       <tr>
-        <td>{languageTag() === 'fr' ? 'Âge' : 'Age'}</td>
-        <td>{#if data.product.fields.ageMin}{data.product.fields.ageMin}{#if data.product.fields.ageMax}-{data.product.fields.ageMax}{:else}+{/if}{:else}{languageTag() === 'fr' ? 'Tous' : 'All'}{/if}</td>
+        <td class="td--bordered">{languageTag() === 'fr' ? 'Âge' : 'Age'}</td>
+        <td class="td--bordered">{#if data.product.fields.ageMin}{data.product.fields.ageMin}{#if data.product.fields.ageMax}-{data.product.fields.ageMax}{:else}+{/if}{:else}{languageTag() === 'fr' ? 'Tous' : 'All'}{/if}</td>
       </tr>
     </table>
 
@@ -130,7 +130,7 @@
     {#if model && model.fields.gallery?.length}
     <figure>
       {#key model.fields.id}
-      <Slider buttons autoheight bind:slider={slider}>
+      <Slider disabled={model.fields.gallery?.length === 1} buttons autoheight bind:slider={slider}>
         <ol class="slider__container">
           {#each model.fields.gallery as media}
           <li class="slide">
@@ -262,7 +262,7 @@
     .buttons {
       flex-wrap: nowrap;
       button {
-        padding: $base * 0.25;
+        padding: 0;
         flex: 1;
         max-width: 33%;
       }

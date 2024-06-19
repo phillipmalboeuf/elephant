@@ -53,7 +53,9 @@
 </nav>
 {/if}
 {:else}
-<slot />
+<figure class="slider" style:--view={`${100 / slidesPerView}%`}>
+  <slot />
+</figure>
 {/if}
 
 <style lang="scss">
