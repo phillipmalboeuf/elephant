@@ -16,6 +16,9 @@
 
   let model: Entry<TypeModelSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   let slider: EmblaCarouselType
+  
+  let height: number
+  let header: HTMLElement
 
   const locale = languageTag()
 
@@ -48,6 +51,8 @@
 	<!-- <meta name="description" content="{data.product.fields.description}" /> -->
 </svelte:head>
 
+<svelte:window bind:innerHeight={height} />
+
 <nav class="flex flex--tight_gapped">
   {#if data.collection}
   <a href="/collections/{data.collection.fields.id}" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> {languageTag() === 'fr' ? 'Retour à' : 'Return to'} {data.collection.fields.title}</a>
@@ -56,7 +61,7 @@
 </nav>
 
 <article class="flex flex--gapped" style:--color={data.collection?.fields.color} class:light={['#fff', '#ffffff'].includes(data.collection?.fields.color)}>
-  <header class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12">
+  <header bind:this={header} class="flex flex--start flex--gapped col col--4of12 col--mobile--12of12" style:top={(header && height) ? (header.clientHeight > height) ? (height - header.clientHeight - 20)+"px" : undefined : undefined}>
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
     <table class="table--tight col col--4of12 col--mobile--12of12">
@@ -180,9 +185,6 @@
       @media (min-width: $mobile) {
         position: sticky;
         top: $gap * 3.5;
-
-        max-height: calc(100vh - ($gap * 7));
-        overflow-y: auto;
       }
 
       padding: $base;
@@ -252,6 +254,11 @@
     }
 
     figure {
+      @media (min-width: $mobile) {
+        // position: sticky;
+        // top: $gap * 3.5;
+      }
+      
       width: 100%;
       // min-height: 50vh;
       position: relative;
