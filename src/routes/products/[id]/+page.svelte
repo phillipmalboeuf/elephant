@@ -257,6 +257,17 @@
       position: relative;
       background-color: $white;
       border-radius: $radius;
+
+      :global(.slide) {
+        height: calc(100vh - ($gap * 7));
+
+        :global(img),
+        :global(video) {
+          border-radius: $radius;
+          height: calc(100vh - ($gap * 7));
+          object-fit: contain;
+        }
+      }
     }
 
     .buttons {
