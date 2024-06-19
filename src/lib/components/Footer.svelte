@@ -88,6 +88,13 @@
         margin: ($base * 0.5) 0;
       }
 
+      :global(a) {
+        &:hover,
+        &:focus {
+          color: $green_dark;
+        }
+      }
+
       a[hreflang] {
         &:not([aria-current="page"]) {
           opacity: 0.75;

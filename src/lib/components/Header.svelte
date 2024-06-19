@@ -210,10 +210,6 @@
         :global(svg:first-child) {
           display: none;
         }
-
-        :global(svg:last-child) {
-          width: 240px;
-        }
       }
 
       &.menu {
