@@ -181,6 +181,7 @@
     }
 
     @media (max-width: $mobile) {
+      padding: ($base * 0.75) ($gap * 0.75);
       justify-content: space-between;
 
       nav {
@@ -200,7 +201,7 @@
         flex-direction: column;
         align-items: center;
 
-        :global(.h5) {
+        :global(a.h5) {
           font-size: $base * 2;
         }
       }
@@ -208,6 +209,10 @@
       .logo {
         :global(svg:first-child) {
           display: none;
+        }
+
+        :global(svg:last-child) {
+          width: 240px;
         }
       }
 

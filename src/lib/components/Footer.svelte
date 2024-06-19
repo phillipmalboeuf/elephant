@@ -41,7 +41,7 @@
       hreflang={'en-US'}
       aria-current={languageTag() === 'en-US' ? "page" : undefined} class="button">US</a>
   </nav>
-  <nav class="col col--2of12 col--mobile--6of12">
+  <nav class="col col--2of12 col--mobile--7of12">
     {#each social.fields.links as link}
     <Link {link} /><br>
     {/each}
@@ -50,7 +50,7 @@
     <Link {link} /><br>
     {/each}
   </nav>
-  <nav class="col col--2of12 col--mobile--6of12">
+  <nav class="col col--2of12 col--mobile--5of12">
     {#each primary.fields.links as link}
     <Link {link} /><br>
     {/each}
