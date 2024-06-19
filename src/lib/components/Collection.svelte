@@ -92,7 +92,7 @@
         }
 
         span.fr:before {
-          content: "Voir le tout de ";
+          content: "Afficher tous les produits de ";
         }
 
         @media (max-width: $mobile) {
