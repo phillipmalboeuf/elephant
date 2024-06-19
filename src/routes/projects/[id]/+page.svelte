@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Entry } from 'contentful'
+  import { languageTag } from '$lib/paraglide/runtime'
 
   import Media from '$lib/components/Media.svelte'
   import Document from '$lib/components/document/index.svelte'
@@ -58,25 +59,33 @@
   </section>
   {/if}
 
+  {#if data.project.fields.type || data.project.fields.surface || data.project.fields.height}
   <aside class="flex flex--tight_gapped">
     <hr>
-    <div class="col col--5of12 col--mobile--12of12">Spécifications</div>
+    <div class="col col--5of12 col--mobile--12of12">{languageTag() === 'fr' ? 'Spécifications' : 'Specifications'}</div>
 
     <table class="col col--7of12 col--mobile--12of12 table--inverse">
+      {#if data.project.fields.type}
       <tr>
-        <td>Type d’activité</td>
+        <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
         <td>{data.project.fields.type}</td>
       </tr>
+      {/if}
+      {#if data.project.fields.surface}
       <tr>
-        <td>Taille</td>
+        <td>Dimensions</td>
         <td>{data.project.fields.surface}</td>
       </tr>
+      {/if}
+      {#if data.project.fields.height}
       <tr>
-        <td>Hauteur de chute</td>
+        <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
         <td>{data.project.fields.height}</td>
       </tr>
+      {/if}
     </table>
   </aside>
+  {/if}
 
   {#if data.project.fields.products?.length}
   <section class="products flex flex--gapped">

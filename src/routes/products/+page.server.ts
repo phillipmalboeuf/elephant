@@ -45,6 +45,9 @@ export const load = (async ({ locals, url, params }) => {
     }),
   ])
 
+  // console.log(models.items.map(item => ([item.fields.title, item.fields.height])))
+  // console.log(products.items.map(product => ([product.fields.title, product.fields.models.find(m => models.items.find(model => model.sys.id === m.sys.id))?.fields.title])))
+
   return {
     collections: pages.items[0].fields.content?.filter(isTypeCollection),
     products: (heightFilter || xFilter || yFilter) ? {

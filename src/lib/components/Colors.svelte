@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex flex--tight_gapped" on:pointerleave={() => current = undefined}>
-  <h6><small>{item.fields.title}</small>{#if current}<small>{current.fields.title} {current.fields.sku}</small>{:else}{#if item.fields.subtitle}<small>{item.fields.subtitle}</small>{/if}{/if}</h6>
+  <h6><small>{item.fields.title}</small>{#if current}<small>{current.fields.title}{#if current.fields.sku}&nbsp;{current.fields.sku}{/if}</small>{:else}{#if item.fields.subtitle}<small>{item.fields.subtitle}</small>{/if}{/if}</h6>
   <hr>
   <ul class="list--nostyle flex flex--tight_gapped">
     {#if item.fields.colours?.length}
