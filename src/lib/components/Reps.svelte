@@ -4,7 +4,7 @@
   import type { Entry } from 'contentful'
 
   export let item: Entry<TypeRepsSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
-  let timeout: number
+  let timeout: NodeJS.Timeout
   let form: HTMLFormElement
 </script>
 
@@ -29,7 +29,7 @@
   <main class="col col--8of12 col--mobile--12of12">
     <ul class="list--nostyle">
       {#each ($page.data.reps?.items || item.fields.reps) as rep}
-      <li class="flex flex--tight_gapped flex--spaced flex--middle">
+      <li class="flex flex--tight_gapped flex--spaced flex--middle ">
         <div>
           {rep.fields.name}<br>
           <strong>{rep.fields.city}, {rep.fields.state}{#if rep.fields.plus}, {rep.fields.plus}{/if}</strong>

@@ -362,6 +362,10 @@ details {
 		align-items: center;
 	}
 
+	&.flex--nowrap {
+		flex-wrap: nowrap;
+	}
+
   &.flex--gapped {
     --gap: #{$base};
 

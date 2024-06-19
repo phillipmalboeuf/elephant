@@ -22,8 +22,8 @@
     <aside class="col col--5of12 col--mobile--12of12">
       <hr />
       <h4>{project.fields.title}</h4>
-      <div class="flex">
-        <p>{project.fields.location}</p>
+      <div class="flex flex--nowrap">
+        <p class="col col--mobile--6of12">{project.fields.location}</p>
         <a class="button button--green" href="/projects/{project.fields.id}">Read more</a>
       </div>
     </aside>
