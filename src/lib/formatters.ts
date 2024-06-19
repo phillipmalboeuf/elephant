@@ -21,13 +21,14 @@ export const time = (value: string, timezone: number) => {
 export const feet = (meters: number) => {
   if (languageTag() !== 'en-US') { return meters + "m" }
   const value = meters * 3.280839895
+  console.log(value)
   return new Intl.ListFormat(undefined, { style: "narrow", type: "unit" }).format([
     new Intl.NumberFormat(undefined, {
       style: "unit",
       unit: "foot",
       unitDisplay: "narrow",
       maximumFractionDigits: 0
-    }).format(value),
+    }).format(Math.floor(value)),
     new Intl.NumberFormat(undefined, {
       style: "unit",
       unit: "inch",

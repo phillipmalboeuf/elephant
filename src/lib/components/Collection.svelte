@@ -3,7 +3,7 @@
   import type { Entry } from 'contentful'
   
   import Media from './Media.svelte'
-  import Slider from './Slider.svelte';
+  import Slider from './Slider.svelte'
   import CollectionProduct from './CollectionProduct.svelte'
   import { languageTag } from '$lib/paraglide/runtime'
 
@@ -98,6 +98,13 @@
         @media (max-width: $mobile) {
           order: 99;
           margin: $base auto 0;
+        }
+      }
+
+      a.button--green {
+        @media (max-width: $mobile) {
+          order: 99;
+          margin: 0 auto;
         }
       }
 
