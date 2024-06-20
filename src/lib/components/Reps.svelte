@@ -29,7 +29,7 @@
   <main class="col col--8of12 col--mobile--12of12">
     <ul class="list--nostyle">
       {#each ($page.data.reps?.items || item.fields.reps) as rep}
-      <li class="flex flex--tight_gapped flex--spaced flex--middle ">
+      <li class="flex flex--tight_gapped flex--spaced flex--middle flex--nowrap">
         <div>
           {rep.fields.name}<br>
           <strong>{rep.fields.city}, {rep.fields.state}{#if rep.fields.plus}, {rep.fields.plus}{/if}</strong>
