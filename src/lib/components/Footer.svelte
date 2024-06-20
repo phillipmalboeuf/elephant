@@ -18,7 +18,13 @@
 </script>
 
 <svelte:body on:pointermove={e => {
-  x = e.x
+  if (e.x < 52) {
+    x = 52
+  } else if (e.x > window.innerWidth - 110) {
+    x = window.innerWidth - 110
+  } else {
+    x = e.x
+  }
 }} />
 
 <footer class="flex flex--gapped">
