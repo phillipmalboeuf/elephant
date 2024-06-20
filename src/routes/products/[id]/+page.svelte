@@ -138,7 +138,7 @@
       <Slider disabled={model.fields.gallery?.length === 1} buttons autoheight bind:slider={slider}>
         <ol class="slider__container">
           {#each model.fields.gallery as media}
-          <li class="slide">
+          <li class="slide" class:horizontal={media.fields.file.details.image.width > media.fields.file.details.image.height}>
             <Media {media} />
           </li>
           {/each}
@@ -278,6 +278,13 @@
           height: calc(100vh - ($gap * 7));
           object-fit: contain;
           margin: 0 auto;
+        }
+
+        &.horizontal {
+          :global(img),
+          :global(video) {
+            object-fit: cover;
+          }
         }
 
         @media (max-width: $mobile) {
