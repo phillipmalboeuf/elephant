@@ -5,7 +5,7 @@
 <style lang="scss">
   svg {
     @media (max-width: $mobile) {
-      width: 240px;
+      width: 220px;
     }
   }
 </style>

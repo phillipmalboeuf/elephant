@@ -47,7 +47,7 @@
       hreflang={'en'}
       aria-current={languageTag() === 'en' ? "page" : undefined} class="button">English (CAN)</a>
   </nav>
-  <nav class="col col--2of12 col--mobile--7of12">
+  <nav class="col col--2of12 col--mobile--8of12">
     {#each social.fields.links as link}
     <Link {link} /><br>
     {/each}
@@ -56,7 +56,7 @@
     <Link {link} /><br>
     {/each}
   </nav>
-  <nav class="col col--2of12 col--mobile--5of12">
+  <nav class="col col--2of12 col--mobile--4of12">
     {#each primary.fields.links as link}
     <Link {link} /><br>
     {/each}

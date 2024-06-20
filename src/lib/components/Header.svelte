@@ -26,7 +26,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<header class="flex flex--gapped flex--middle" class:menu class:search>
+<header class="flex flex--gapped flex--nowrap flex--middle" class:menu class:search>
   <a href="/" class="logo">
     <Logo />
     <Logotype />
