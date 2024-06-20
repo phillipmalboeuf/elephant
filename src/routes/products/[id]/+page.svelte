@@ -264,17 +264,29 @@
       width: 100%;
       // min-height: 50vh;
       position: relative;
-      background-color: $white;
-      border-radius: $radius;
+      // border-radius: $radius;
 
       :global(.slide) {
         height: calc(100vh - ($gap * 7));
 
         :global(img),
         :global(video) {
+          background-color: $white;
           border-radius: $radius;
+          width: auto;
+          max-width: 100%;
           height: calc(100vh - ($gap * 7));
           object-fit: contain;
+          margin: 0 auto;
+        }
+
+        @media (max-width: $mobile) {
+          height: calc(80vh - ($gap * 7));
+
+          :global(img),
+          :global(video) {
+            height: calc(80vh - ($gap * 7));
+          }
         }
       }
     }
@@ -291,6 +303,11 @@
     section {
       .button.col {
         justify-content: space-between;
+      }
+
+      :global(img),
+      :global(video) {
+        background-color: $white;
       }
     }
   }
