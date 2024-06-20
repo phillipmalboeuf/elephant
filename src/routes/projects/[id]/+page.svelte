@@ -92,7 +92,7 @@
     <hr>
     <h3 class="col col--6of12 col--mobile--12of12">Dans ce projet</h3>
     <div class="col col--12of12">
-      <Slider disabled={width < 888 ? data.project.fields.products.length === 1 : data.project.fields.products.length < 3} buttons autoheight slidesPerView={width < 888 ? 1 : 3}>
+      <Slider disabled={width < 888 ? data.project.fields.products.length === 1 : data.project.fields.products.length <= 3} buttons autoheight slidesPerView={width < 888 ? 1 : 3}>
         <ol class="slider__container">
           {#each data.project.fields.products as product}
           <li class="slide">
