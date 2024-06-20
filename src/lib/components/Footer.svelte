@@ -33,19 +33,19 @@
       <Logotype />
     </a>
   </nav>
-  <nav class="col col--3of12 col--mobile--12of12 flex flex--tight_gapped">
+  <nav class="col col--4of12 col--mobile--12of12 flex flex--tight_gapped">
     <a href={i18n.route($page.url.pathname)}
       data-sveltekit-reload
       hreflang={'fr'}
       aria-current={languageTag() === 'fr' ? "page" : undefined} class="button">Français</a>
     <a href={i18n.route($page.url.pathname)}
       data-sveltekit-reload
-      hreflang={'en'}
-      aria-current={languageTag().startsWith('en') ? "page" : undefined} class="button">English</a>
+      hreflang={'en-US'}
+      aria-current={languageTag() === 'en-US' ? "page" : undefined} class="button">English (USA)</a>
     <a href={i18n.route($page.url.pathname)}
       data-sveltekit-reload
-      hreflang={'en-US'}
-      aria-current={languageTag() === 'en-US' ? "page" : undefined} class="button">US</a>
+      hreflang={'en'}
+      aria-current={languageTag() === 'en' ? "page" : undefined} class="button">English (CAN)</a>
   </nav>
   <nav class="col col--2of12 col--mobile--7of12">
     {#each social.fields.links as link}
