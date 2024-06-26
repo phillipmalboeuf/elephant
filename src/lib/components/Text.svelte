@@ -6,6 +6,7 @@
   import Document from '$lib/components/document/index.svelte'
   import Link from './Link.svelte'
   import Colors from './Colors.svelte'
+  import Parallax from './Parallax.svelte';
 
   export let index: number
   export let item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -16,7 +17,9 @@
 
   {#if item.fields.media?.length}
   <figure class="col col--6of12 col--mobile--12of12">
-    <Media media={item.fields.media[0]} />
+    <Parallax speed={0.1}>
+      <Media media={item.fields.media[0]} />
+    </Parallax>
   </figure>
   {/if}
 
