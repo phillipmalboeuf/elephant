@@ -264,7 +264,8 @@
       width: 100%;
       // min-height: 50vh;
       position: relative;
-      // border-radius: $radius;
+      border-radius: $radius;
+      overflow: hidden;
 
       :global(.slide) {
         height: calc(100vh - ($gap * 7));
