@@ -90,7 +90,7 @@
   {#if data.project.fields.products?.length}
   <section class="products flex flex--gapped">
     <hr>
-    <h3 class="col col--6of12 col--mobile--12of12">Dans ce projet</h3>
+    <h3 class="col col--6of12 col--mobile--12of12">{languageTag() === 'fr' ? 'Dans ce projet' : 'In this project'}</h3>
     <div class="col col--12of12">
       <Slider disabled={width < 888 ? data.project.fields.products.length === 1 : data.project.fields.products.length <= 3} buttons autoheight slidesPerView={width < 888 ? 1 : 3}>
         <ol class="slider__container">
