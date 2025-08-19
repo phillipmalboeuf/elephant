@@ -9,7 +9,7 @@
   export let video: HTMLVideoElement = undefined
 
   function cdn(url: string) {
-    return url
+    return url.replace('//downloads.ctfassets.net', '//images.ctfassets.net').replace('//images.ctfassets.net', '//philsassets.imgix.net')
   }
 </script>
 
