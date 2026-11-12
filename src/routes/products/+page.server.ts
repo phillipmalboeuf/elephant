@@ -1,5 +1,5 @@
 import { type TypePageSkeleton, type TypeCollectionSkeleton, type TypeProductSkeleton, type TypeModelSkeleton, isTypeCollection } from '$lib/clients/content_types'
-import { content } from '$lib/clients/contentful'
+import { cachedEntries } from '$lib/clients/contentful'
 import { languageTag } from '$lib/paraglide/runtime.js'
 import type { Entry } from 'contentful'
 
@@ -12,9 +12,9 @@ export const load = (async ({ locals, url, params }) => {
   const typeFilter = url.searchParams.get("type")
 
   const [pages, products, models] = await Promise.all([
-    // content.getEntries<TypeCollectionSkeleton>({ content_type: "collection", include: 2 }),
-    content.getEntries<TypePageSkeleton>({ content_type: "page", include: 3, "fields.id": "products", locale: { fr: 'fr-CA' }[languageTag()] || 'en-US' }),
-    url.searchParams?.size && content.getEntries<TypeProductSkeleton>({
+    // cachedEntries<TypeCollectionSkeleton>({ content_type: "collection", include: 2 }),
+    cachedEntries<TypePageSkeleton>({ content_type: "page", include: 3, "fields.id": "products", locale: { fr: 'fr-CA' }[languageTag()] || 'en-US' }),
+    url.searchParams?.size && cachedEntries<TypeProductSkeleton>({
       content_type: "product", include: 2, limit: 300, locale: { fr: 'fr-CA' }[languageTag()] || 'en-US',
       "fields.models[exists]": true,
       ...budgetFilter ? {
@@ -28,7 +28,7 @@ export const load = (async ({ locals, url, params }) => {
         "fields.types": typeFilter
       } : {},
     }),
-    url.searchParams?.size && (heightFilter || xFilter || yFilter) && content.getEntries<TypeModelSkeleton>({
+    url.searchParams?.size && (heightFilter || xFilter || yFilter) && cachedEntries<TypeModelSkeleton>({
       content_type: "model", limit: 300, locale: { fr: 'fr-CA' }[languageTag()] || 'en-US',
       ...heightFilter ? {
         "fields.height[gte]": heightFilter.split('-')[0],
