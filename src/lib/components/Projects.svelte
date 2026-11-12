@@ -8,9 +8,9 @@
   export let item: Entry<TypeRealisationsSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> | { fields: Entry<TypeRealisationsSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">['fields'] }
 </script>
 
-{#if item.fields?.projects.length}
+{#if item.fields?.projects?.length}
 <ol class="list--nostyle">
-  {#each item.fields.projects as project, i}
+  {#each item.fields.projects.filter((project) => project?.fields) as project, i}
   <li class="flex">
     <a class="col col--7of12 col--mobile--12of12" href="/projects/{project.fields.id}">
       <figure>
