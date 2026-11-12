@@ -65,24 +65,26 @@
     <div class="col col--5of12 col--mobile--12of12">{languageTag() === 'fr' ? 'Spécifications' : 'Specifications'}</div>
 
     <table class="col col--7of12 col--mobile--12of12 table--inverse">
-      {#if data.project.fields.type}
-      <tr>
-        <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
-        <td>{data.project.fields.type}</td>
-      </tr>
-      {/if}
-      {#if data.project.fields.surface}
-      <tr>
-        <td>Dimensions</td>
-        <td>{data.project.fields.surface}</td>
-      </tr>
-      {/if}
-      {#if data.project.fields.height}
-      <tr>
-        <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
-        <td>{data.project.fields.height}</td>
-      </tr>
-      {/if}
+      <tbody>
+        {#if data.project.fields.type}
+        <tr>
+          <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
+          <td>{data.project.fields.type}</td>
+        </tr>
+        {/if}
+        {#if data.project.fields.surface}
+        <tr>
+          <td>Dimensions</td>
+          <td>{data.project.fields.surface}</td>
+        </tr>
+        {/if}
+        {#if data.project.fields.height}
+        <tr>
+          <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
+          <td>{data.project.fields.height}</td>
+        </tr>
+        {/if}
+      </tbody>
     </table>
   </aside>
   {/if}

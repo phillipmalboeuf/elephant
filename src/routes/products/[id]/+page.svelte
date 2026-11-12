@@ -65,21 +65,25 @@
     <hr class="col col--12of12">
     <h1 class="h3 col col--12of12">{data.product.fields.title}</h1>
     <table class="table--tight col col--4of12 col--mobile--12of12">
-      <tr>
-        <td class="td--bordered sku">{data.product.fields.sku}</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td class="td--bordered sku">{data.product.fields.sku}</td>
+        </tr>
+      </tbody>
     </table>
     <table class="table--tight col col--8of12 col--mobile--12of12" style:--length={2}>
-      {#if data.product.fields.types?.length}
-      <tr>
-        <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
-        <td>{data.product.fields.types?.map(t => types[t] || t).join(', ')}</td>
-      </tr>
-      {/if}
-      <tr>
-        <td class="td--bordered">{languageTag() === 'fr' ? 'Âge' : 'Age'}</td>
-        <td class="td--bordered">{#if data.product.fields.ageMin}{data.product.fields.ageMin}{#if data.product.fields.ageMax}-{data.product.fields.ageMax}{:else}+{/if}{:else}{languageTag() === 'fr' ? 'Tous' : 'All'}{/if}</td>
-      </tr>
+      <tbody>
+        {#if data.product.fields.types?.length}
+        <tr>
+          <td>{languageTag() === 'fr' ? 'Type d’activité' : 'Activity type'}</td>
+          <td>{data.product.fields.types?.map(t => types[t] || t).join(', ')}</td>
+        </tr>
+        {/if}
+        <tr>
+          <td class="td--bordered">{languageTag() === 'fr' ? 'Âge' : 'Age'}</td>
+          <td class="td--bordered">{#if data.product.fields.ageMin}{data.product.fields.ageMin}{#if data.product.fields.ageMax}-{data.product.fields.ageMax}{:else}+{/if}{:else}{languageTag() === 'fr' ? 'Tous' : 'All'}{/if}</td>
+        </tr>
+      </tbody>
     </table>
 
     {#if data.product.fields.models?.length}
@@ -93,28 +97,30 @@
 
     {#if model}
     <table class="table--tight col col--12of12">
-      <tr>
-        <th>{languageTag() === 'fr' ? 'Spécifications' : 'Specifications'}</th>
-      </tr>
-      {#if model.fields.capacity}
-      <tr>
-        <td>{languageTag() === 'fr' ? 'Capacité' : 'Capacity'}</td>
-        <td>{model.fields.capacity}</td>
-      </tr>
-      {/if}
-      <tr>
-        <!-- <td>Taille</td> -->
-        <td>{languageTag() === 'fr' ? 'Aire de protection' : 'Use zone'}</td>
-        <td>{feet(languageTag() === 'en-US' ? (model.fields.surfaceXASTM || model.fields.surfaceX) : model.fields.surfaceX)} x {feet(languageTag() === 'en-US' ? (model.fields.surfaceYASTM || model.fields.surfaceY) : model.fields.surfaceY)}</td>
-      </tr>
-      <tr>
-        <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
-        <td>{feet(model.fields.height)}</td>
-      </tr>
-      <!-- <tr>
-        <td>Zone de sécurité</td>
-        <td>{model.fields.security}</td>
-      </tr> -->
+      <tbody>
+        <tr>
+          <th>{languageTag() === 'fr' ? 'Spécifications' : 'Specifications'}</th>
+        </tr>
+        {#if model.fields.capacity}
+        <tr>
+          <td>{languageTag() === 'fr' ? 'Capacité' : 'Capacity'}</td>
+          <td>{model.fields.capacity}</td>
+        </tr>
+        {/if}
+        <tr>
+          <!-- <td>Taille</td> -->
+          <td>{languageTag() === 'fr' ? 'Aire de protection' : 'Use zone'}</td>
+          <td>{feet(languageTag() === 'en-US' ? (model.fields.surfaceXASTM || model.fields.surfaceX) : model.fields.surfaceX)} x {feet(languageTag() === 'en-US' ? (model.fields.surfaceYASTM || model.fields.surfaceY) : model.fields.surfaceY)}</td>
+        </tr>
+        <tr>
+          <td>{languageTag() === 'fr' ? 'Hauteur de chute' : 'Fall height'}</td>
+          <td>{feet(model.fields.height)}</td>
+        </tr>
+        <!-- <tr>
+          <td>Zone de sécurité</td>
+          <td>{model.fields.security}</td>
+        </tr> -->
+      </tbody>
     </table>
 
     {#if model.fields.downloads?.length}
